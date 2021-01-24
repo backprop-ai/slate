@@ -5,6 +5,7 @@
   <a href="https://hub.docker.com/r/slatedocs/slate"><img src="https://img.shields.io/docker/v/slatedocs/slate?sort=semver" alt="Docker Version" /></a>
 </p>
 
+Sample change.
 <p align="center">Slate helps you create beautiful, intelligent, responsive API documentation.</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/slatedocs/img/main/screenshot-slate.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
