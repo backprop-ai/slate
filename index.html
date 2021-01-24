@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Kiri Model API v1.0.0</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -281,14 +281,11 @@
     </style>
     <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-e033bdd3.js"></script>
+      <script src="javascripts/all_nosearch-ec00d1ce.js"></script>
 
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -296,285 +293,3513 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-ebd673bf.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#kiri-model-api" class="toc-h1 toc-link" data-title="Kiri Model API v1.0.0">Kiri Model API v1.0.0</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#kiri-model-api-tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#vectorisation" class="toc-h2 toc-link" data-title="vectorisation">vectorisation</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#question-answering" class="toc-h2 toc-link" data-title="question answering">question answering</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#zero-shot-classification" class="toc-h2 toc-link" data-title="zero shot classification">zero shot classification</a>
+                  </li>
+                  <li>
+                    <a href="#zero-shot-image-classification" class="toc-h2 toc-link" data-title="zero shot image classification">zero shot image classification</a>
+                  </li>
+                  <li>
+                    <a href="#text-generation" class="toc-h2 toc-link" data-title="text generation">text generation</a>
+                  </li>
+                  <li>
+                    <a href="#text-summarisation" class="toc-h2 toc-link" data-title="text summarisation">text summarisation</a>
+                  </li>
+                  <li>
+                    <a href="#emotion-detection" class="toc-h2 toc-link" data-title="emotion detection">emotion detection</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocS_VectorisationBody" class="toc-h2 toc-link" data-title="VectorisationBody">VectorisationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VectorisationSingle" class="toc-h2 toc-link" data-title="VectorisationSingle">VectorisationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VectorisationBatch" class="toc-h2 toc-link" data-title="VectorisationBatch">VectorisationBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VectorisationResponse" class="toc-h2 toc-link" data-title="VectorisationResponse">VectorisationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VectorisationSingleResponse" class="toc-h2 toc-link" data-title="VectorisationSingleResponse">VectorisationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VectorisationBatchResponse" class="toc-h2 toc-link" data-title="VectorisationBatchResponse">VectorisationBatchResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QABody" class="toc-h2 toc-link" data-title="QABody">QABody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QASingle" class="toc-h2 toc-link" data-title="QASingle">QASingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QABatch" class="toc-h2 toc-link" data-title="QABatch">QABatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QAResponse" class="toc-h2 toc-link" data-title="QAResponse">QAResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QASingleResponse" class="toc-h2 toc-link" data-title="QASingleResponse">QASingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_QABatchResponse" class="toc-h2 toc-link" data-title="QABatchResponse">QABatchResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationBody" class="toc-h2 toc-link" data-title="ClassificationBody">ClassificationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationSingle" class="toc-h2 toc-link" data-title="ClassificationSingle">ClassificationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationBatch" class="toc-h2 toc-link" data-title="ClassificationBatch">ClassificationBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationResponse" class="toc-h2 toc-link" data-title="ClassificationResponse">ClassificationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationSingleResponse" class="toc-h2 toc-link" data-title="ClassificationSingleResponse">ClassificationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ClassificationBatchResponse" class="toc-h2 toc-link" data-title="ClassificationBatchResponse">ClassificationBatchResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageClassificationBody" class="toc-h2 toc-link" data-title="ImageClassificationBody">ImageClassificationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageClassificationSingle" class="toc-h2 toc-link" data-title="ImageClassificationSingle">ImageClassificationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageClassificationResponse" class="toc-h2 toc-link" data-title="ImageClassificationResponse">ImageClassificationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageClassificationSingleResponse" class="toc-h2 toc-link" data-title="ImageClassificationSingleResponse">ImageClassificationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationBody" class="toc-h2 toc-link" data-title="GenerationBody">GenerationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationSingle" class="toc-h2 toc-link" data-title="GenerationSingle">GenerationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationBatch" class="toc-h2 toc-link" data-title="GenerationBatch">GenerationBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationResponse" class="toc-h2 toc-link" data-title="GenerationResponse">GenerationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationSingleResponse" class="toc-h2 toc-link" data-title="GenerationSingleResponse">GenerationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_GenerationBatchResponse" class="toc-h2 toc-link" data-title="GenerationBatchResponse">GenerationBatchResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationBody" class="toc-h2 toc-link" data-title="SummarisationBody">SummarisationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationSingle" class="toc-h2 toc-link" data-title="SummarisationSingle">SummarisationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationBatch" class="toc-h2 toc-link" data-title="SummarisationBatch">SummarisationBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationResponse" class="toc-h2 toc-link" data-title="SummarisationResponse">SummarisationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationSingleResponse" class="toc-h2 toc-link" data-title="SummarisationSingleResponse">SummarisationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SummarisationBatchResponse" class="toc-h2 toc-link" data-title="SummarisationBatchResponse">SummarisationBatchResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionBody" class="toc-h2 toc-link" data-title="EmotionBody">EmotionBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionSingle" class="toc-h2 toc-link" data-title="EmotionSingle">EmotionSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionBatch" class="toc-h2 toc-link" data-title="EmotionBatch">EmotionBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionResponse" class="toc-h2 toc-link" data-title="EmotionResponse">EmotionResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionSingleResponse" class="toc-h2 toc-link" data-title="EmotionSingleResponse">EmotionSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_EmotionBatchResponse" class="toc-h2 toc-link" data-title="EmotionBatchResponse">EmotionBatchResponse</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <!-- Generator: Widdershins v4.0.1 -->
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id="kiri-model-api">Kiri Model API v1.0.0</h1>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+
+<p>Welcome to our API documentation! Things to note:</p>
+
+<ul>
+<li><p>Most endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different <code>body</code> and <code>response</code> variants are shown in the respective <code>single</code> and <code>batch</code> schemas.</p></li>
+<li><p>All endpoints require authentication with your API key in the <code>x-api-key</code> header.</p></li>
+<li><p>Some endpoints may have multiple <code>model</code> options. This is useful to know if your task is in a language other than English.</p></li>
+<li><p>Every account gets <code>2000</code> seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.</p></li>
+</ul>
+
+<p>If anything is unclear or you find that something is not working as intended, please get in touch!</p>
+
+<p>Base URLs:</p>
+
+<ul>
+<li><a href="https://api.kiri.ai">https://api.kiri.ai</a></li>
+</ul>
+
+<p>Email: <a href="mailto:hello@kiri.ai">Support</a> 
+License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a></p>
 <h1 id='authentication'>Authentication</h1>
+<ul>
+<li>API Key (ApiKeyAuth)
+
+<ul>
+<li>Parameter Name: <strong>x-api-key</strong>, in: header. </li>
+</ul></li>
+</ul>
+
+<h1 id="kiri-model-api-tasks">Tasks</h1>
+
+<p>Endpoints to call tasks that implement various models for your use cases.</p>
+<h2 id='vectorisation'>vectorisation</h2>
+<p><a id="opIdvectorisation"></a></p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/vectorisation <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"text":"iPhone 12 128GB","model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">iPhone 12 128GB</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/vectorisation"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">iPhone 12 128GB</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/vectorisation</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div>
+<p><code>POST /vectorisation</code></p>
+
+<p>vectorises string or list of strings</p>
+
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Body parameter</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 12 128GB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id="vectorisation-parameters">Parameters</h3>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemavectorisationbody">VectorisationBody</a></td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>text or list of text to vectorise</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example responses</p>
+
+<p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<h3 id="vectorisation-responses">Responses</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
+<th>Status</th>
 <th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successfully vectorised</td>
+<td><a href="#schemavectorisationresponse">VectorisationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='question-answering'>question answering</h2>
+<p><a id="opIdqa"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/qa <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"question":"What is the meaning of life?","context":"The meaning of life is 42.","prev_q":["What is not the meaning of life?"],"prev_a":["unknown"],"model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">question</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">What is the meaning of life?</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">context</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">The meaning of life is 42.</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">prev_q</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">What is not the meaning of life?</span><span class="se">\"</span><span class="s">],</span><span class="se">\"</span><span class="s">prev_a</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">unknown</span><span class="se">\"</span><span class="s">],</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/qa"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">question</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">What is the meaning of life?</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">context</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">The meaning of life is 42.</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">prev_q</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">What is not the meaning of life?</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">prev_a</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">unknown</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/qa</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /qa</code></p>
+
+<p>Performs QA on question, context, previous questions and previous answers. Answers &quot;unknown&quot; if the question cannot be answered.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What is the meaning of life?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The meaning of life is 42."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prev_q"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"What is not the meaning of life?"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"prev_a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"unknown"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="question-answering-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaqabody">QABody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="question-answering-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful QA</td>
+<td><a href="#schemaqaresponse">QAResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='zero-shot-classification'>zero shot classification</h2>
+<p><a id="opIdclassification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/classification <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"text":"I am really mad because my product broke.","labels":["product issue","furniture","space"],"model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">I am really mad because my product broke.</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">labels</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">product issue</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">furniture</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">space</span><span class="se">\"</span><span class="s">],</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/classification"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">I am really mad because my product broke.</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">labels</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">product issue</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">furniture</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">space</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/classification</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /classification</code></p>
+
+<p>Performs zero shot classification on provided text and labels.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am really mad because my product broke."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"product issue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"furniture"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"space"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="zero-shot-classification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaclassificationbody">ClassificationBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"product issue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"furniture"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"space"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="zero-shot-classification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful classification</td>
+<td><a href="#schemaclassificationresponse">ClassificationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='zero-shot-image-classification'>zero shot image classification</h2>
+<p><a id="opIdimage-classification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/image-classification <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"image":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA","labels":["healthy brain","brain with tumor"],"model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">image</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">labels</span><span class="se">\"</span><span class="s">:[</span><span class="se">\"</span><span class="s">healthy brain</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">brain with tumor</span><span class="se">\"</span><span class="s">],</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/image-classification"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">image</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">labels</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">healthy brain</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">brain with tumor</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/image-classification</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /image-classification</code></p>
+
+<p>Performs zero shot image classification on provided base64 encoded image and labels. The probabilities predicted for the labels will always sum to 100%.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"healthy brain"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brain with tumor"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="zero-shot-image-classification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaimageclassificationbody">ImageClassificationBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brain with tumor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"healthy brain"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="zero-shot-image-classification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful classification</td>
+<td><a href="#schemaimageclassificationresponse">ImageClassificationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='text-generation'>text generation</h2>
+<p><a id="opIdgeneration"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/generation <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"text":"Geralt knew the signs, the monster was a","min_length":10,"max_length":20,"temperature":1,"top_k":0,"top_p":1,"repetition_penalty":1,"length_penalty":1,"num_beams":1,"num_generations":1,"model":"gpt2-large"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Geralt knew the signs, the monster was a</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">min_length</span><span class="se">\"</span><span class="s">:10,</span><span class="se">\"</span><span class="s">max_length</span><span class="se">\"</span><span class="s">:20,</span><span class="se">\"</span><span class="s">temperature</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">top_k</span><span class="se">\"</span><span class="s">:0,</span><span class="se">\"</span><span class="s">top_p</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">repetition_penalty</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">length_penalty</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">num_beams</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">num_generations</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">gpt2-large</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/generation"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Geralt knew the signs, the monster was a</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">min_length</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">max_length</span><span class="dl">"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">temperature</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">top_k</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">top_p</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">repetition_penalty</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">length_penalty</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">num_beams</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">num_generations</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">gpt2-large</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/generation</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /generation</code></p>
+
+<p>Performs generation on the provided text with the specified parameters</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"min_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_k"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_p"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repetition_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"length_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_beams"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_generations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt2-large"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="text-generation-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemagenerationbody">GenerationBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a vampire that day; after the siege her companions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="text-generation-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful generation</td>
+<td><a href="#schemagenerationresponse">GenerationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='text-summarisation'>text summarisation</h2>
+<p><a id="opIdsummarisation"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/summarisation <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"text":"Some long text to summarise","model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">Some long text to summarise</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/summarisation"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Some long text to summarise</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/summarisation</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /summarisation</code></p>
+
+<p>Performs summarisation on the provided text</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some long text to summarise"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="text-summarisation-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemasummarisationbody">SummarisationBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summary of long text"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="text-summarisation-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful summarisation</td>
+<td><a href="#schemasummarisationresponse">SummarisationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='emotion-detection'>emotion detection</h2>
+<p><a id="opIdemotion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.kiri.ai/emotion <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"text":"I hope this works","model":"english"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.kiri.ai"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">text</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">I hope this works</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">english</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/emotion"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">I hope this works</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">english</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.kiri.ai/emotion</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /emotion</code></p>
+
+<p>Performs emotion detection on the provided text. The response is a string of comma separated emotions. The emotions are from: neutral, admiration, approval, annoyance, gratitude, disapproval, amusement, curiosity, love, optimism, disappointment, joy, realization, anger, sadness, confusion, caring, excitement, surprise, disgust, desire, fear, remorse, embarrassment, nervousness, pride, relief, grief.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I hope this works"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="emotion-detection-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaemotionbody">EmotionBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimism"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="emotion-detection-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful emotion detection</td>
+<td><a href="#schemaemotionresponse">EmotionResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h1 id='schemas'>Schemas</h1>
+<h2 id="tocS_VectorisationBody">VectorisationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationbody"></a>
+<a id="schema_VectorisationBody"></a>
+<a id="tocSvectorisationbody"></a>
+<a id="tocsvectorisationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 12 128GB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Vectorisation body</p>
+<h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Vectorisation body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Vectorisation body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemavectorisationsingle">VectorisationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item vectorisation</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemavectorisationbatch">VectorisationBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch vectorisation</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_VectorisationSingle">VectorisationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationsingle"></a>
+<a id="schema_VectorisationSingle"></a>
+<a id="tocSvectorisationsingle"></a>
+<a id="tocsvectorisationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 12 128GB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item vectorisation</p>
+<h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>model</td>
+<td>multilingual</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_VectorisationBatch">VectorisationBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationbatch"></a>
+<a id="schema_VectorisationBatch"></a>
+<a id="tocSvectorisationbatch"></a>
+<a id="tocsvectorisationbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"iPhone 12 128GB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RTX 3090"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch vectorisation</p>
+<h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>model</td>
+<td>multilingual</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_VectorisationResponse">VectorisationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationresponse"></a>
+<a id="schema_VectorisationResponse"></a>
+<a id="tocSvectorisationresponse"></a>
+<a id="tocsvectorisationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Vectorisation response</p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Vectorisation response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Vectorisation responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemavectorisationsingleresponse">VectorisationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemavectorisationbatchresponse">VectorisationBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_VectorisationSingleResponse">VectorisationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationsingleresponse"></a>
+<a id="schema_VectorisationSingleResponse"></a>
+<a id="tocSvectorisationsingleresponse"></a>
+<a id="tocsvectorisationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item vectorisation response</p>
+<h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vector</td>
+<td>[number]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_VectorisationBatchResponse">VectorisationBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavectorisationbatchresponse"></a>
+<a id="schema_VectorisationBatchResponse"></a>
+<a id="tocSvectorisationbatchresponse"></a>
+<a id="tocsvectorisationbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vectorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.2312301</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.82939192</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.5312701</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch vectorisation response</p>
+<h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vectorList</td>
+<td>[array]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QABody">QABody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqabody"></a>
+<a id="schema_QABody"></a>
+<a id="tocSqabody"></a>
+<a id="tocsqabody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What is the meaning of life?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The meaning of life is 42."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prev_q"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"What is not the meaning of life?"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"prev_a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"unknown"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>QA body</p>
+<h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QA body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>QA body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaqasingle">QASingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item QA</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaqabatch">QABatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch QA</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QASingle">QASingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqasingle"></a>
+<a id="schema_QASingle"></a>
+<a id="tocSqasingle"></a>
+<a id="tocsqasingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What is the meaning of life?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The meaning of life is 42."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prev_q"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"What is not the meaning of life?"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"prev_a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"unknown"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item QA</p>
+<h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>question</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>question to answer</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>context</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>context to answer based on</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>prev_q</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>prev_a</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English only QA</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QABatch">QABatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqabatch"></a>
+<a id="schema_QABatch"></a>
+<a id="tocSqabatch"></a>
+<a id="tocsqabatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"What is the meaning of life?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Where does Sally live?"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"The meaning of life is 42."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Sally lives in London"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"prev_q"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"What is not the meaning of life?"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Where did Sally go to school?"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"prev_a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch QA</p>
+<h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>question</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>list of questions to answer</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>context</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>context to answer based on</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>prev_q</td>
+<td>[array]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>prev_a</td>
+<td>[array]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English only QA</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QAResponse">QAResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqaresponse"></a>
+<a id="schema_QAResponse"></a>
+<a id="tocSqaresponse"></a>
+<a id="tocsqaresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>QA response</p>
+<h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QA response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>QA responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaqasingleresponse">QASingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaqabatchresponse">QABatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QASingleResponse">QASingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqasingleresponse"></a>
+<a id="schema_QASingleResponse"></a>
+<a id="tocSqasingleresponse"></a>
+<a id="tocsqasingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item QA response</p>
+<h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>answer</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_QABatchResponse">QABatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaqabatchresponse"></a>
+<a id="schema_QABatchResponse"></a>
+<a id="tocSqabatchresponse"></a>
+<a id="tocsqabatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"42"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"London"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch QA response</p>
+<h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>answer</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationBody">ClassificationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationbody"></a>
+<a id="schema_ClassificationBody"></a>
+<a id="tocSclassificationbody"></a>
+<a id="tocsclassificationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am really mad because my product broke."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"product issue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"furniture"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"space"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Classification body</p>
+<h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Classification body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Classification body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaclassificationsingle">ClassificationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item Classification</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaclassificationbatch">ClassificationBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch Classification</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationSingle">ClassificationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationsingle"></a>
+<a id="schema_ClassificationSingle"></a>
+<a id="tocSclassificationsingle"></a>
+<a id="tocsclassificationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am really mad because my product broke."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"product issue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"furniture"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"space"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item Classification</p>
+<h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>text to classify</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>labels to predict probabilities for</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English only classification<br>  * <code>multilingual</code> - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+<tr>
+<td>model</td>
+<td>multilingual</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationBatch">ClassificationBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationbatch"></a>
+<a id="schema_ClassificationBatch"></a>
+<a id="tocSclassificationbatch"></a>
+<a id="tocsclassificationbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"I am really mad because my product broke."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"I would like to collaborate with you on social media"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"product issue"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"furniture"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"space"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"product issue"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"furniture"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sales"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch Classification</p>
+<h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>list text to classify</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>[array]</td>
+<td>true</td>
+<td>none</td>
+<td>list of list of labels to predict probabilities for</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English only classification<br>  * <code>multilingual</code> - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+<tr>
+<td>model</td>
+<td>multilingual</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationResponse">ClassificationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationresponse"></a>
+<a id="schema_ClassificationResponse"></a>
+<a id="tocSclassificationresponse"></a>
+<a id="tocsclassificationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"product issue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"furniture"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"space"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Classification response</p>
+<h3 id='properties-16'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Classification response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Classification responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaclassificationsingleresponse">ClassificationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaclassificationbatchresponse">ClassificationBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationSingleResponse">ClassificationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationsingleresponse"></a>
+<a id="schema_ClassificationSingleResponse"></a>
+<a id="tocSclassificationsingleresponse"></a>
+<a id="tocsclassificationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"product issue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"furniture"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"space"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item classification response</p>
+<h3 id='properties-17'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>probabilities</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>dictionary where the keys are your labels and values are probabilities</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ClassificationBatchResponse">ClassificationBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclassificationbatchresponse"></a>
+<a id="schema_ClassificationBatchResponse"></a>
+<a id="tocSclassificationbatchresponse"></a>
+<a id="tocsclassificationbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"product issue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"furniture"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"space"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"product issue"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"furniture"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.03</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.87</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch classification response</p>
+<h3 id='properties-18'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>probabilities</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+<td>list of dictionaries where the keys are your labels and values are probabilities</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageClassificationBody">ImageClassificationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimageclassificationbody"></a>
+<a id="schema_ImageClassificationBody"></a>
+<a id="tocSimageclassificationbody"></a>
+<a id="tocsimageclassificationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"healthy brain"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brain with tumor"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Image classification body</p>
+<h3 id='properties-19'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Image classification body</td>
+<td><a href="#schemaimageclassificationsingle">ImageClassificationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Image classification body</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageClassificationSingle">ImageClassificationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimageclassificationsingle"></a>
+<a id="schema_ImageClassificationSingle"></a>
+<a id="tocSimageclassificationsingle"></a>
+<a id="tocsimageclassificationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"healthy brain"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brain with tumor"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item image classification</p>
+<h3 id='properties-20'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>base64 encoded image</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>labels to predict probabilities for</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - Classification with English labels</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageClassificationResponse">ImageClassificationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimageclassificationresponse"></a>
+<a id="schema_ImageClassificationResponse"></a>
+<a id="tocSimageclassificationresponse"></a>
+<a id="tocsimageclassificationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brain with tumor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"healthy brain"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Image classification response</p>
+<h3 id='properties-21'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Image classification response</td>
+<td><a href="#schemaimageclassificationsingleresponse">ImageClassificationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>Image classification response</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageClassificationSingleResponse">ImageClassificationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimageclassificationsingleresponse"></a>
+<a id="schema_ImageClassificationSingleResponse"></a>
+<a id="tocSimageclassificationsingleresponse"></a>
+<a id="tocsimageclassificationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brain with tumor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.98</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"healthy brain"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item image classification response</p>
+<h3 id='properties-22'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>probabilities</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationBody">GenerationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationbody"></a>
+<a id="schema_GenerationBody"></a>
+<a id="tocSgenerationbody"></a>
+<a id="tocsgenerationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"min_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_k"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_p"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repetition_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"length_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_beams"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_generations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt2-large"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Generation body</p>
+<h3 id='properties-23'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Generation body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Generation body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemagenerationsingle">GenerationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item generation</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemagenerationbatch">GenerationBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch generation</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationSingle">GenerationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationsingle"></a>
+<a id="schema_GenerationSingle"></a>
+<a id="tocSgenerationsingle"></a>
+<a id="tocsgenerationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"min_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_k"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_p"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repetition_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"length_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_beams"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_generations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt2-large"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item generation</p>
+<h3 id='properties-24'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>text to generate from</td>
+</tr>
+<tr>
+<td>min_length</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>minimum number of tokens to generate</td>
+</tr>
+<tr>
+<td>max_length</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>maximum number of tokens to generate</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>value that alters softmax probabilities. 0.0 is deterministic. As the temperature gets higher, the generated tokens get more random.</td>
+</tr>
+<tr>
+<td>top_k</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>sampling strategy in which probabilities are redistributed among top k most-likely tokens. 0 is a special value where all tokens are considered.</td>
+</tr>
+<tr>
+<td>top_p</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Sampling strategy in which probabilities are distributed among set of words with combined probability greater than p.</td>
+</tr>
+<tr>
+<td>repetition_penalty</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Penalty to be applied to tokens present in the text and tokens already generated in the sequence. Values higher than 1.0 penalise repetition, while lower than 1.0 encourage it.</td>
+</tr>
+<tr>
+<td>length_penalty</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.</td>
+</tr>
+<tr>
+<td>num_beams</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Number of beams to be used in beam search. (1 is no beam search)</td>
+</tr>
+<tr>
+<td>num_generations</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Number of times to do generation for input.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>gpt2-large</code> - An optimised large version of gpt2.<br>  * <code>t5-base-qa-summary-emotion</code> - The T5 base model trained for question answering, summarisation and emotion detection.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>gpt2-large</td>
+</tr>
+<tr>
+<td>model</td>
+<td>t5-base-qa-summary-emotion</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationBatch">GenerationBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationbatch"></a>
+<a id="schema_GenerationBatch"></a>
+<a id="tocSgenerationbatch"></a>
+<a id="tocsgenerationbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Geralt knew the signs, the monster was a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"c: Elon Musk is an entrepreneur born in 1971. q: Who is Elon Musk? a: an entrepreneur q: When was he born? a: "</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"min_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_k"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"top_p"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"repetition_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"length_penalty"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_beams"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"num_generations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gpt2-large"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch generation</p>
+<h3 id='properties-25'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>text to generate from</td>
+</tr>
+<tr>
+<td>min_length</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>minimum number of tokens to generate</td>
+</tr>
+<tr>
+<td>max_length</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>maximum number of tokens to generate</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>value that alters softmax probabilities. 0.0 is deterministic. As the temperature gets higher, the generated tokens get more random.</td>
+</tr>
+<tr>
+<td>top_k</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>sampling strategy in which probabilities are redistributed among top k most-likely tokens. 0 is a special value where all tokens are considered.</td>
+</tr>
+<tr>
+<td>top_p</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Sampling strategy in which probabilities are distributed among set of words with combined probability greater than p.</td>
+</tr>
+<tr>
+<td>repetition_penalty</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Penalty to be applied to tokens present in the text and tokens already generated in the sequence. Values higher than 1.0 penalise repetition, while lower than 1.0 encourage it.</td>
+</tr>
+<tr>
+<td>length_penalty</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.</td>
+</tr>
+<tr>
+<td>num_beams</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Number of beams to be used in beam search. (1 is no beam search)</td>
+</tr>
+<tr>
+<td>num_generations</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Number of times to do generation for input.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>gpt2-large</code> - An optimised large version of gpt2.<br>  * <code>t5-base-qa-summary-emotion</code> - The T5 base model trained for question answering, summarisation and emotion detection.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>gpt2-large</td>
+</tr>
+<tr>
+<td>model</td>
+<td>t5-base-qa-summary-emotion</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationResponse">GenerationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationresponse"></a>
+<a id="schema_GenerationResponse"></a>
+<a id="tocSgenerationresponse"></a>
+<a id="tocsgenerationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a vampire that day; after the siege her companions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Generation response</p>
+<h3 id='properties-26'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Generation response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Generation responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemagenerationsingleresponse">GenerationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemagenerationbatchresponse">GenerationBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationSingleResponse">GenerationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationsingleresponse"></a>
+<a id="schema_GenerationSingleResponse"></a>
+<a id="tocSgenerationsingleresponse"></a>
+<a id="tocsgenerationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geralt knew the signs, the monster was a vampire that day; after the siege her companions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item generation response</p>
+<h3 id='properties-27'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_GenerationBatchResponse">GenerationBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemagenerationbatchresponse"></a>
+<a id="schema_GenerationBatchResponse"></a>
+<a id="tocSgenerationbatchresponse"></a>
+<a id="tocsgenerationbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Geralt knew the signs, the monster was a vampire that day; after the siege her companions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"1971"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch generation response</p>
+<h3 id='properties-28'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationBody">SummarisationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationbody"></a>
+<a id="schema_SummarisationBody"></a>
+<a id="tocSsummarisationbody"></a>
+<a id="tocssummarisationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some long text to summarise"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Summarisation body</p>
+<h3 id='properties-29'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Summarisation body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Summarisation body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemasummarisationsingle">SummarisationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item summarisation</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemasummarisationbatch">SummarisationBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch summarisation</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationSingle">SummarisationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationsingle"></a>
+<a id="schema_SummarisationSingle"></a>
+<a id="tocSsummarisationsingle"></a>
+<a id="tocssummarisationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some long text to summarise"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item summarisation</p>
+<h3 id='properties-30'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English text summarisation</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationBatch">SummarisationBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationbatch"></a>
+<a id="schema_SummarisationBatch"></a>
+<a id="tocSsummarisationbatch"></a>
+<a id="tocssummarisationbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Some long text to summarise"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Some more long text that needs summarising"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch summarisation</p>
+<h3 id='properties-31'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English text summarisation</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationResponse">SummarisationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationresponse"></a>
+<a id="schema_SummarisationResponse"></a>
+<a id="tocSsummarisationresponse"></a>
+<a id="tocssummarisationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summary of long text"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Summarisation response</p>
+<h3 id='properties-32'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Summarisation response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Summarisation responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemasummarisationsingleresponse">SummarisationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemasummarisationbatchresponse">SummarisationBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationSingleResponse">SummarisationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationsingleresponse"></a>
+<a id="schema_SummarisationSingleResponse"></a>
+<a id="tocSsummarisationsingleresponse"></a>
+<a id="tocssummarisationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Summary of long text"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item summarisation response</p>
+<h3 id='properties-33'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SummarisationBatchResponse">SummarisationBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasummarisationbatchresponse"></a>
+<a id="schema_SummarisationBatchResponse"></a>
+<a id="tocSsummarisationbatchresponse"></a>
+<a id="tocssummarisationbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Summary of long text"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Summary of some more long text"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch summarisation response</p>
+<h3 id='properties-34'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionBody">EmotionBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionbody"></a>
+<a id="schema_EmotionBody"></a>
+<a id="tocSemotionbody"></a>
+<a id="tocsemotionbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I hope this works"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Emotion body</p>
+<h3 id='properties-35'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Emotion body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Emotion body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaemotionsingle">EmotionSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item emotion detection</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaemotionbatch">EmotionBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch emotion detection</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionSingle">EmotionSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionsingle"></a>
+<a id="schema_EmotionSingle"></a>
+<a id="tocSemotionsingle"></a>
+<a id="tocsemotionsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I hope this works"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item emotion detection</p>
+<h3 id='properties-36'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English text emotion detection</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionBatch">EmotionBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionbatch"></a>
+<a id="schema_EmotionBatch"></a>
+<a id="tocSemotionbatch"></a>
+<a id="tocsemotionbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"I hope this works"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"I'll be most upset if things go wrong"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch emotion detection</p>
+<h3 id='properties-37'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>english</code> - English text emotion detection</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>english</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionResponse">EmotionResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionresponse"></a>
+<a id="schema_EmotionResponse"></a>
+<a id="tocSemotionresponse"></a>
+<a id="tocsemotionresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimism"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Emotion detection response</p>
+<h3 id='properties-38'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Emotion detection response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Emotion detection responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaemotionsingleresponse">EmotionSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaemotionbatchresponse">EmotionBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionSingleResponse">EmotionSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionsingleresponse"></a>
+<a id="schema_EmotionSingleResponse"></a>
+<a id="tocSemotionsingleresponse"></a>
+<a id="tocsemotionsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimism"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item emotion detection response</p>
+<h3 id='properties-39'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_EmotionBatchResponse">EmotionBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaemotionbatchresponse"></a>
+<a id="schema_EmotionBatchResponse"></a>
+<a id="tocSemotionbatchresponse"></a>
+<a id="tocsemotionbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"optimism"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"disappointment, sadness"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch emotion detection response</p>
+<h3 id='properties-40'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
 </tr>
 </tbody></table>
 
@@ -582,7 +3807,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
