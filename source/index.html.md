@@ -1,5 +1,5 @@
 ---
-title: Kiri Model API v1.0.0
+title: Kiri API v1.0.0
 language_tabs:
   - shell: shell
   - python: python
@@ -18,17 +18,17 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="kiri-model-api">Kiri Model API v1.0.0</h1>
+<h1 id="kiri-api">Kiri API v1.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
 Welcome to our API documentation! Things to note:
 
-  - Most endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different `body` and `response` variants are shown in the respective `single` and `batch` schemas.
+  - Most task endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different `body` and `response` variants are shown in the respective `single` and `batch` schemas.
   
   - All endpoints require authentication with your API key in the `x-api-key` header.
   
-  - Some endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.
+  - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.
   
   - Every account gets `2000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.
   
@@ -46,19 +46,19 @@ License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a
 * API Key (ApiKeyAuth)
     - Parameter Name: **x-api-key**, in: header. 
 
-<h1 id="kiri-model-api-tasks">Tasks</h1>
+<h1 id="kiri-api-tasks">Tasks</h1>
 
 Endpoints to call tasks that implement various models for your use cases.
 
-## vectorisation
+## text vectorisation
 
-<a id="opIdvectorisation"></a>
+<a id="opIdtext-vectorisation"></a>
 
 > Code samples
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/vectorisation \
+  --url https://api.kiri.ai/text-vectorisation \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -78,7 +78,7 @@ headers = {
     'x-api-key': "API_KEY"
     }
 
-conn.request("POST", "/vectorisation", payload, headers)
+conn.request("POST", "/text-vectorisation", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -101,7 +101,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/vectorisation");
+xhr.open("POST", "https://api.kiri.ai/text-vectorisation");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -109,7 +109,7 @@ xhr.setRequestHeader("x-api-key", "API_KEY");
 xhr.send(data);
 ```
 
-`POST /vectorisation`
+`POST /text-vectorisation`
 
 vectorises string or list of strings
 
@@ -122,11 +122,11 @@ vectorises string or list of strings
 }
 ```
 
-<h3 id="vectorisation-parameters">Parameters</h3>
+<h3 id="text-vectorisation-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[VectorisationBody](#schemavectorisationbody)|true|text or list of text to vectorise|
+|body|body|[TextVectorisationBody](#schematextvectorisationbody)|true|text or list of text to vectorise|
 
 > Example responses
 
@@ -141,11 +141,11 @@ vectorises string or list of strings
 }
 ```
 
-<h3 id="vectorisation-responses">Responses</h3>
+<h3 id="text-vectorisation-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successfully vectorised|[VectorisationResponse](#schemavectorisationresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successfully vectorised|[TextVectorisationResponse](#schematextvectorisationresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -265,15 +265,15 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
-## zero shot classification
+## text classification
 
-<a id="opIdclassification"></a>
+<a id="opIdtext-classification"></a>
 
 > Code samples
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/classification \
+  --url https://api.kiri.ai/text-classification \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -293,7 +293,7 @@ headers = {
     'x-api-key': "API_KEY"
     }
 
-conn.request("POST", "/classification", payload, headers)
+conn.request("POST", "/text-classification", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -321,7 +321,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/classification");
+xhr.open("POST", "https://api.kiri.ai/text-classification");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -329,9 +329,9 @@ xhr.setRequestHeader("x-api-key", "API_KEY");
 xhr.send(data);
 ```
 
-`POST /classification`
+`POST /text-classification`
 
-Performs zero shot classification on provided text and labels.
+Performs classification on provided text and labels.
 
 > Body parameter
 
@@ -347,11 +347,11 @@ Performs zero shot classification on provided text and labels.
 }
 ```
 
-<h3 id="zero-shot-classification-parameters">Parameters</h3>
+<h3 id="text-classification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ClassificationBody](#schemaclassificationbody)|true|none|
+|body|body|[TextClassificationBody](#schematextclassificationbody)|true|none|
 
 > Example responses
 
@@ -367,11 +367,11 @@ Performs zero shot classification on provided text and labels.
 }
 ```
 
-<h3 id="zero-shot-classification-responses">Responses</h3>
+<h3 id="text-classification-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful classification|[ClassificationResponse](#schemaclassificationresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful classification|[TextClassificationResponse](#schematextclassificationresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -490,13 +490,13 @@ ApiKeyAuth
 
 ## text generation
 
-<a id="opIdgeneration"></a>
+<a id="opIdtext-generation"></a>
 
 > Code samples
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/generation \
+  --url https://api.kiri.ai/text-generation \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -516,7 +516,7 @@ headers = {
     'x-api-key': "API_KEY"
     }
 
-conn.request("POST", "/generation", payload, headers)
+conn.request("POST", "/text-generation", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
@@ -548,7 +548,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/generation");
+xhr.open("POST", "https://api.kiri.ai/text-generation");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -556,7 +556,7 @@ xhr.setRequestHeader("x-api-key", "API_KEY");
 xhr.send(data);
 ```
 
-`POST /generation`
+`POST /text-generation`
 
 Performs generation on the provided text with the specified parameters
 
@@ -582,7 +582,7 @@ Performs generation on the provided text with the specified parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[GenerationBody](#schemagenerationbody)|true|none|
+|body|body|[TextGenerationBody](#schematextgenerationbody)|true|none|
 
 > Example responses
 
@@ -598,7 +598,7 @@ Performs generation on the provided text with the specified parameters
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful generation|[GenerationResponse](#schemagenerationresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful generation|[TextGenerationResponse](#schematextgenerationresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -803,14 +803,387 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
+<h1 id="kiri-api-models">Models</h1>
+
+Endpoints to view, upload and delete models
+
+## get models
+
+<a id="opIdget-models"></a>
+
+> Code samples
+
+```shell
+curl --request GET \
+  --url https://api.kiri.ai/models \
+  --header 'Accept: application/json' \
+  --header 'x-api-key: API_KEY'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.kiri.ai")
+
+headers = {
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("GET", "/models", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://api.kiri.ai/models");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`GET /models`
+
+Gets a list of global and user models. Some info about global models is hidden.
+
+<h3 id="get-models-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|include_global|query|boolean|false|Whether to include global models in the list|
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "id": "model_model-name",
+    "name": "model-name",
+    "description": "Some description about model-name",
+    "tasks": [
+      "text-generation",
+      "qa"
+    ],
+    "build_status": "building",
+    "last_deployment": "2021-03-05T10:31:16Z"
+  }
+]
+```
+
+<h3 id="get-models-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|list of models|[ModelsResponse](#schemamodelsresponse)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## get model
+
+<a id="opIdget-model"></a>
+
+> Code samples
+
+```shell
+curl --request GET \
+  --url https://api.kiri.ai/models/string \
+  --header 'Accept: application/json' \
+  --header 'x-api-key: API_KEY'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.kiri.ai")
+
+headers = {
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("GET", "/models/string", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://api.kiri.ai/models/string");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`GET /models/{model}`
+
+Gets detailed information about a model. Cannot query global models.
+
+<h3 id="get-model-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|model|path|string|true|Name of the model|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": "model_model-name",
+  "name": "model-name",
+  "description": "Some description about model-name",
+  "tasks": [
+    "text-generation",
+    "qa"
+  ],
+  "build_status": "building",
+  "build_message": "some build related message",
+  "last_deployment": "2021-03-05T10:31:16Z",
+  "model_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/model.bin",
+  "config_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/config.json",
+  "requirements_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/requirements.txt"
+}
+```
+
+<h3 id="get-model-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|detailed information about a model|[ModelResponse](#schemamodelresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|model not found|[ModelResponse404](#schemamodelresponse404)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## delete model
+
+<a id="opIddelete-model"></a>
+
+> Code samples
+
+```shell
+curl --request DELETE \
+  --url https://api.kiri.ai/models/string \
+  --header 'Accept: application/json' \
+  --header 'x-api-key: API_KEY'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.kiri.ai")
+
+headers = {
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("DELETE", "/models/string", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("DELETE", "https://api.kiri.ai/models/string");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`DELETE /models/{model}`
+
+deletes a model
+
+<h3 id="delete-model-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|model|path|string|true|Name of the model|
+
+> Example responses
+
+> 200 Response
+
+```json
+null
+```
+
+<h3 id="delete-model-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|model deleted|[DeleteModelResponse](#schemadeletemodelresponse)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|model not found|[ModelResponse404](#schemamodelresponse404)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
+## get upload url for model
+
+<a id="opIdupload-url"></a>
+
+> Code samples
+
+```shell
+curl --request POST \
+  --url https://api.kiri.ai/upload-url \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: API_KEY' \
+  --data '{"model_name":"some-model"}'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.kiri.ai")
+
+payload = "{\"model_name\":\"some-model\"}"
+
+headers = {
+    'Content-Type': "application/json",
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("POST", "/upload-url", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = JSON.stringify({
+  "model_name": "some-model"
+});
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://api.kiri.ai/upload-url");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`POST /upload-url`
+
+(BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.
+  The zip file must contain exactly three files (no folders) with the specified names:
+  
+  * model.bin (an initiated model on CPU pickled with dill)
+  * config.json (with description (value is string) and task (value is list of strings) keys)
+  * requirements.txt (a python requirements file with any runtime dependencies)
+  
+  The maximum supported size of the zip file is 5GB.
+  
+It is the simplest to use our [python library](https://github.com/kiri-ai/kiri) for this functionality.
+
+> Body parameter
+
+```json
+{
+  "model_name": "some-model"
+}
+```
+
+<h3 id="get-upload-url-for-model-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[UploadUrlBody](#schemauploadurlbody)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+"https://kiri-user-uploads.s3.eu-central-1.amazonaws.com/acc_id/some-model.zip"
+```
+
+<h3 id="get-upload-url-for-model-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|link for PUT request with the zip file|[UploadUrlResponse](#schemauploadurlresponse)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 # Schemas
 
-<h2 id="tocS_VectorisationBody">VectorisationBody</h2>
+<h2 id="tocS_TextVectorisationBody">TextVectorisationBody</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationbody"></a>
-<a id="schema_VectorisationBody"></a>
-<a id="tocSvectorisationbody"></a>
-<a id="tocsvectorisationbody"></a>
+<a id="schematextvectorisationbody"></a>
+<a id="schema_TextVectorisationBody"></a>
+<a id="tocStextvectorisationbody"></a>
+<a id="tocstextvectorisationbody"></a>
 
 ```json
 {
@@ -820,32 +1193,32 @@ ApiKeyAuth
 
 ```
 
-Vectorisation body
+Text vectorisation body
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|Vectorisation body|any|false|none|Vectorisation body variants for single and batch requests|
+|Text vectorisation body|any|false|none|Text vectorisation body variants for single and batch requests|
 
 oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[VectorisationSingle](#schemavectorisationsingle)|false|none|Single item vectorisation|
+|*anonymous*|[TextVectorisationSingle](#schematextvectorisationsingle)|false|none|Single item vectorisation|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[VectorisationBatch](#schemavectorisationbatch)|false|none|Batch vectorisation|
+|*anonymous*|[TextVectorisationBatch](#schematextvectorisationbatch)|false|none|Batch text vectorisation|
 
-<h2 id="tocS_VectorisationSingle">VectorisationSingle</h2>
+<h2 id="tocS_TextVectorisationSingle">TextVectorisationSingle</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationsingle"></a>
-<a id="schema_VectorisationSingle"></a>
-<a id="tocSvectorisationsingle"></a>
-<a id="tocsvectorisationsingle"></a>
+<a id="schematextvectorisationsingle"></a>
+<a id="schema_TextVectorisationSingle"></a>
+<a id="tocStextvectorisationsingle"></a>
+<a id="tocstextvectorisationsingle"></a>
 
 ```json
 {
@@ -862,7 +1235,7 @@ Single item vectorisation
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |text|string|true|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.|
+|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -871,12 +1244,12 @@ Single item vectorisation
 |model|english|
 |model|multilingual|
 
-<h2 id="tocS_VectorisationBatch">VectorisationBatch</h2>
+<h2 id="tocS_TextVectorisationBatch">TextVectorisationBatch</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationbatch"></a>
-<a id="schema_VectorisationBatch"></a>
-<a id="tocSvectorisationbatch"></a>
-<a id="tocsvectorisationbatch"></a>
+<a id="schematextvectorisationbatch"></a>
+<a id="schema_TextVectorisationBatch"></a>
+<a id="tocStextvectorisationbatch"></a>
+<a id="tocstextvectorisationbatch"></a>
 
 ```json
 {
@@ -889,14 +1262,14 @@ Single item vectorisation
 
 ```
 
-Batch vectorisation
+Batch text vectorisation
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |text|[string]|true|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.|
+|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -905,12 +1278,12 @@ Batch vectorisation
 |model|english|
 |model|multilingual|
 
-<h2 id="tocS_VectorisationResponse">VectorisationResponse</h2>
+<h2 id="tocS_TextVectorisationResponse">TextVectorisationResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationresponse"></a>
-<a id="schema_VectorisationResponse"></a>
-<a id="tocSvectorisationresponse"></a>
-<a id="tocsvectorisationresponse"></a>
+<a id="schematextvectorisationresponse"></a>
+<a id="schema_TextVectorisationResponse"></a>
+<a id="tocStextvectorisationresponse"></a>
+<a id="tocstextvectorisationresponse"></a>
 
 ```json
 {
@@ -934,20 +1307,20 @@ oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[VectorisationSingleResponse](#schemavectorisationsingleresponse)|false|none|none|
+|*anonymous*|[TextVectorisationSingleResponse](#schematextvectorisationsingleresponse)|false|none|none|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[VectorisationBatchResponse](#schemavectorisationbatchresponse)|false|none|none|
+|*anonymous*|[TextVectorisationBatchResponse](#schematextvectorisationbatchresponse)|false|none|none|
 
-<h2 id="tocS_VectorisationSingleResponse">VectorisationSingleResponse</h2>
+<h2 id="tocS_TextVectorisationSingleResponse">TextVectorisationSingleResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationsingleresponse"></a>
-<a id="schema_VectorisationSingleResponse"></a>
-<a id="tocSvectorisationsingleresponse"></a>
-<a id="tocsvectorisationsingleresponse"></a>
+<a id="schematextvectorisationsingleresponse"></a>
+<a id="schema_TextVectorisationSingleResponse"></a>
+<a id="tocStextvectorisationsingleresponse"></a>
+<a id="tocstextvectorisationsingleresponse"></a>
 
 ```json
 {
@@ -959,7 +1332,7 @@ xor
 
 ```
 
-Single item vectorisation response
+Single item text vectorisation response
 
 ### Properties
 
@@ -967,12 +1340,12 @@ Single item vectorisation response
 |---|---|---|---|---|
 |vector|[number]|false|none|none|
 
-<h2 id="tocS_VectorisationBatchResponse">VectorisationBatchResponse</h2>
+<h2 id="tocS_TextVectorisationBatchResponse">TextVectorisationBatchResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemavectorisationbatchresponse"></a>
-<a id="schema_VectorisationBatchResponse"></a>
-<a id="tocSvectorisationbatchresponse"></a>
-<a id="tocsvectorisationbatchresponse"></a>
+<a id="schematextvectorisationbatchresponse"></a>
+<a id="schema_TextVectorisationBatchResponse"></a>
+<a id="tocStextvectorisationbatchresponse"></a>
+<a id="tocstextvectorisationbatchresponse"></a>
 
 ```json
 {
@@ -990,7 +1363,7 @@ Single item vectorisation response
 
 ```
 
-Batch vectorisation response
+Batch text vectorisation response
 
 ### Properties
 
@@ -1072,7 +1445,7 @@ Single item QA
 |context|string|true|none|context to answer based on|
 |prev_q|[string]|false|none|none|
 |prev_a|[string]|false|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English only QA|
+|model|string|false|none|Model to use:<br>  * `english` - English only QA<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1128,7 +1501,7 @@ Batch QA
 |context|[string]|true|none|context to answer based on|
 |prev_q|[array]|false|none|none|
 |prev_a|[array]|false|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English only QA|
+|model|string|false|none|Model to use:<br>  * `english` - English only QA<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1217,12 +1590,12 @@ Batch QA response
 |---|---|---|---|---|
 |answer|[string]|false|none|none|
 
-<h2 id="tocS_ClassificationBody">ClassificationBody</h2>
+<h2 id="tocS_TextClassificationBody">TextClassificationBody</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationbody"></a>
-<a id="schema_ClassificationBody"></a>
-<a id="tocSclassificationbody"></a>
-<a id="tocsclassificationbody"></a>
+<a id="schematextclassificationbody"></a>
+<a id="schema_TextClassificationBody"></a>
+<a id="tocStextclassificationbody"></a>
+<a id="tocstextclassificationbody"></a>
 
 ```json
 {
@@ -1237,32 +1610,32 @@ Batch QA response
 
 ```
 
-Classification body
+Text classification body
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|Classification body|any|false|none|Classification body variants for single and batch requests|
+|Text classification body|any|false|none|Text classification body variants for single and batch requests|
 
 oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[ClassificationSingle](#schemaclassificationsingle)|false|none|Single item Classification|
+|*anonymous*|[TextClassificationSingle](#schematextclassificationsingle)|false|none|Single item Text Classification|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[ClassificationBatch](#schemaclassificationbatch)|false|none|Batch Classification|
+|*anonymous*|[TextClassificationBatch](#schematextclassificationbatch)|false|none|Batch Text Classification|
 
-<h2 id="tocS_ClassificationSingle">ClassificationSingle</h2>
+<h2 id="tocS_TextClassificationSingle">TextClassificationSingle</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationsingle"></a>
-<a id="schema_ClassificationSingle"></a>
-<a id="tocSclassificationsingle"></a>
-<a id="tocsclassificationsingle"></a>
+<a id="schematextclassificationsingle"></a>
+<a id="schema_TextClassificationSingle"></a>
+<a id="tocStextclassificationsingle"></a>
+<a id="tocstextclassificationsingle"></a>
 
 ```json
 {
@@ -1277,7 +1650,7 @@ xor
 
 ```
 
-Single item Classification
+Single item Text Classification
 
 ### Properties
 
@@ -1285,7 +1658,7 @@ Single item Classification
 |---|---|---|---|---|
 |text|string|true|none|text to classify|
 |labels|[string]|true|none|labels to predict probabilities for|
-|model|string|false|none|Model to use:<br>  * `english` - English only classification<br>  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.|
+|model|string|false|none|Model to use:<br>  * `english` - English only classification<br>  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1294,12 +1667,12 @@ Single item Classification
 |model|english|
 |model|multilingual|
 
-<h2 id="tocS_ClassificationBatch">ClassificationBatch</h2>
+<h2 id="tocS_TextClassificationBatch">TextClassificationBatch</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationbatch"></a>
-<a id="schema_ClassificationBatch"></a>
-<a id="tocSclassificationbatch"></a>
-<a id="tocsclassificationbatch"></a>
+<a id="schematextclassificationbatch"></a>
+<a id="schema_TextClassificationBatch"></a>
+<a id="tocStextclassificationbatch"></a>
+<a id="tocstextclassificationbatch"></a>
 
 ```json
 {
@@ -1324,7 +1697,7 @@ Single item Classification
 
 ```
 
-Batch Classification
+Batch Text Classification
 
 ### Properties
 
@@ -1332,7 +1705,7 @@ Batch Classification
 |---|---|---|---|---|
 |text|[string]|true|none|list text to classify|
 |labels|[array]|true|none|list of list of labels to predict probabilities for|
-|model|string|false|none|Model to use:<br>  * `english` - English only classification<br>  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.|
+|model|string|false|none|Model to use:<br>  * `english` - English only classification<br>  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1341,12 +1714,12 @@ Batch Classification
 |model|english|
 |model|multilingual|
 
-<h2 id="tocS_ClassificationResponse">ClassificationResponse</h2>
+<h2 id="tocS_TextClassificationResponse">TextClassificationResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationresponse"></a>
-<a id="schema_ClassificationResponse"></a>
-<a id="tocSclassificationresponse"></a>
-<a id="tocsclassificationresponse"></a>
+<a id="schematextclassificationresponse"></a>
+<a id="schema_TextClassificationResponse"></a>
+<a id="tocStextclassificationresponse"></a>
+<a id="tocstextclassificationresponse"></a>
 
 ```json
 {
@@ -1359,32 +1732,32 @@ Batch Classification
 
 ```
 
-Classification response
+Text classification response
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|Classification response|any|false|none|Classification responses for single and batch requests|
+|Text classification response|any|false|none|Text classification responses for single and batch requests|
 
 oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[ClassificationSingleResponse](#schemaclassificationsingleresponse)|false|none|none|
+|*anonymous*|[TextClassificationSingleResponse](#schematextclassificationsingleresponse)|false|none|none|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[ClassificationBatchResponse](#schemaclassificationbatchresponse)|false|none|none|
+|*anonymous*|[TextClassificationBatchResponse](#schematextclassificationbatchresponse)|false|none|none|
 
-<h2 id="tocS_ClassificationSingleResponse">ClassificationSingleResponse</h2>
+<h2 id="tocS_TextClassificationSingleResponse">TextClassificationSingleResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationsingleresponse"></a>
-<a id="schema_ClassificationSingleResponse"></a>
-<a id="tocSclassificationsingleresponse"></a>
-<a id="tocsclassificationsingleresponse"></a>
+<a id="schematextclassificationsingleresponse"></a>
+<a id="schema_TextClassificationSingleResponse"></a>
+<a id="tocStextclassificationsingleresponse"></a>
+<a id="tocstextclassificationsingleresponse"></a>
 
 ```json
 {
@@ -1397,7 +1770,7 @@ xor
 
 ```
 
-Single item classification response
+Single item text classification response
 
 ### Properties
 
@@ -1405,12 +1778,12 @@ Single item classification response
 |---|---|---|---|---|
 |probabilities|object|false|none|dictionary where the keys are your labels and values are probabilities|
 
-<h2 id="tocS_ClassificationBatchResponse">ClassificationBatchResponse</h2>
+<h2 id="tocS_TextClassificationBatchResponse">TextClassificationBatchResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemaclassificationbatchresponse"></a>
-<a id="schema_ClassificationBatchResponse"></a>
-<a id="tocSclassificationbatchresponse"></a>
-<a id="tocsclassificationbatchresponse"></a>
+<a id="schematextclassificationbatchresponse"></a>
+<a id="schema_TextClassificationBatchResponse"></a>
+<a id="tocStextclassificationbatchresponse"></a>
+<a id="tocstextclassificationbatchresponse"></a>
 
 ```json
 {
@@ -1430,7 +1803,7 @@ Single item classification response
 
 ```
 
-Batch classification response
+Batch text classification response
 
 ### Properties
 
@@ -1492,7 +1865,7 @@ Single item image classification
 |---|---|---|---|---|
 |image|string|true|none|base64 encoded image|
 |labels|[string]|true|none|labels to predict probabilities for|
-|model|string|false|none|Model to use:<br>  * `english` - Classification with English labels|
+|model|string|false|none|Model to use:<br>  * `english` - Classification with English labels<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1550,12 +1923,12 @@ Single item image classification response
 |---|---|---|---|---|
 |probabilities|object|false|none|dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.|
 
-<h2 id="tocS_GenerationBody">GenerationBody</h2>
+<h2 id="tocS_TextGenerationBody">TextGenerationBody</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationbody"></a>
-<a id="schema_GenerationBody"></a>
-<a id="tocSgenerationbody"></a>
-<a id="tocsgenerationbody"></a>
+<a id="schematextgenerationbody"></a>
+<a id="schema_TextGenerationBody"></a>
+<a id="tocStextgenerationbody"></a>
+<a id="tocstextgenerationbody"></a>
 
 ```json
 {
@@ -1574,32 +1947,32 @@ Single item image classification response
 
 ```
 
-Generation body
+Text generation body
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|Generation body|any|false|none|Generation body variants for single and batch requests|
+|Text generation body|any|false|none|Generation body variants for single and batch requests|
 
 oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[GenerationSingle](#schemagenerationsingle)|false|none|Single item generation|
+|*anonymous*|[TextGenerationSingle](#schematextgenerationsingle)|false|none|Single item text generation|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[GenerationBatch](#schemagenerationbatch)|false|none|Batch generation|
+|*anonymous*|[TextGenerationBatch](#schematextgenerationbatch)|false|none|Batch text generation|
 
-<h2 id="tocS_GenerationSingle">GenerationSingle</h2>
+<h2 id="tocS_TextGenerationSingle">TextGenerationSingle</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationsingle"></a>
-<a id="schema_GenerationSingle"></a>
-<a id="tocSgenerationsingle"></a>
-<a id="tocsgenerationsingle"></a>
+<a id="schematextgenerationsingle"></a>
+<a id="schema_TextGenerationSingle"></a>
+<a id="tocStextgenerationsingle"></a>
+<a id="tocstextgenerationsingle"></a>
 
 ```json
 {
@@ -1618,7 +1991,7 @@ xor
 
 ```
 
-Single item generation
+Single item text generation
 
 ### Properties
 
@@ -1634,7 +2007,7 @@ Single item generation
 |length_penalty|number|false|none|Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.|
 |num_beams|integer|false|none|Number of beams to be used in beam search. (1 is no beam search)|
 |num_generations|integer|false|none|Number of times to do generation for input.|
-|model|string|false|none|Model to use:<br>  * `gpt2-large` - An optimised large version of gpt2.<br>  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.|
+|model|string|false|none|Model to use:<br>  * `gpt2-large` - An optimised large version of gpt2.<br>  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1643,12 +2016,12 @@ Single item generation
 |model|gpt2-large|
 |model|t5-base-qa-summary-emotion|
 
-<h2 id="tocS_GenerationBatch">GenerationBatch</h2>
+<h2 id="tocS_TextGenerationBatch">TextGenerationBatch</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationbatch"></a>
-<a id="schema_GenerationBatch"></a>
-<a id="tocSgenerationbatch"></a>
-<a id="tocsgenerationbatch"></a>
+<a id="schematextgenerationbatch"></a>
+<a id="schema_TextGenerationBatch"></a>
+<a id="tocStextgenerationbatch"></a>
+<a id="tocstextgenerationbatch"></a>
 
 ```json
 {
@@ -1670,7 +2043,7 @@ Single item generation
 
 ```
 
-Batch generation
+Batch text generation
 
 ### Properties
 
@@ -1686,7 +2059,7 @@ Batch generation
 |length_penalty|number|false|none|Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.|
 |num_beams|integer|false|none|Number of beams to be used in beam search. (1 is no beam search)|
 |num_generations|integer|false|none|Number of times to do generation for input.|
-|model|string|false|none|Model to use:<br>  * `gpt2-large` - An optimised large version of gpt2.<br>  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.|
+|model|string|false|none|Model to use:<br>  * `gpt2-large` - An optimised large version of gpt2.<br>  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1695,12 +2068,12 @@ Batch generation
 |model|gpt2-large|
 |model|t5-base-qa-summary-emotion|
 
-<h2 id="tocS_GenerationResponse">GenerationResponse</h2>
+<h2 id="tocS_TextGenerationResponse">TextGenerationResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationresponse"></a>
-<a id="schema_GenerationResponse"></a>
-<a id="tocSgenerationresponse"></a>
-<a id="tocsgenerationresponse"></a>
+<a id="schematextgenerationresponse"></a>
+<a id="schema_TextGenerationResponse"></a>
+<a id="tocStextgenerationresponse"></a>
+<a id="tocstextgenerationresponse"></a>
 
 ```json
 {
@@ -1709,32 +2082,32 @@ Batch generation
 
 ```
 
-Generation response
+Text generation response
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|Generation response|any|false|none|Generation responses for single and batch requests|
+|Text generation response|any|false|none|Text generation responses for single and batch requests|
 
 oneOf
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[GenerationSingleResponse](#schemagenerationsingleresponse)|false|none|none|
+|*anonymous*|[TextGenerationSingleResponse](#schematextgenerationsingleresponse)|false|none|none|
 
 xor
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|*anonymous*|[GenerationBatchResponse](#schemagenerationbatchresponse)|false|none|none|
+|*anonymous*|[TextGenerationBatchResponse](#schematextgenerationbatchresponse)|false|none|none|
 
-<h2 id="tocS_GenerationSingleResponse">GenerationSingleResponse</h2>
+<h2 id="tocS_TextGenerationSingleResponse">TextGenerationSingleResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationsingleresponse"></a>
-<a id="schema_GenerationSingleResponse"></a>
-<a id="tocSgenerationsingleresponse"></a>
-<a id="tocsgenerationsingleresponse"></a>
+<a id="schematextgenerationsingleresponse"></a>
+<a id="schema_TextGenerationSingleResponse"></a>
+<a id="tocStextgenerationsingleresponse"></a>
+<a id="tocstextgenerationsingleresponse"></a>
 
 ```json
 {
@@ -1743,7 +2116,7 @@ xor
 
 ```
 
-Single item generation response
+Single item text generation response
 
 ### Properties
 
@@ -1751,12 +2124,12 @@ Single item generation response
 |---|---|---|---|---|
 |output|string|false|none|none|
 
-<h2 id="tocS_GenerationBatchResponse">GenerationBatchResponse</h2>
+<h2 id="tocS_TextGenerationBatchResponse">TextGenerationBatchResponse</h2>
 <!-- backwards compatibility -->
-<a id="schemagenerationbatchresponse"></a>
-<a id="schema_GenerationBatchResponse"></a>
-<a id="tocSgenerationbatchresponse"></a>
-<a id="tocsgenerationbatchresponse"></a>
+<a id="schematextgenerationbatchresponse"></a>
+<a id="schema_TextGenerationBatchResponse"></a>
+<a id="tocStextgenerationbatchresponse"></a>
+<a id="tocstextgenerationbatchresponse"></a>
 
 ```json
 {
@@ -1768,7 +2141,7 @@ Single item generation response
 
 ```
 
-Batch generation response
+Batch text generation response
 
 ### Properties
 
@@ -2133,4 +2506,210 @@ Batch emotion detection response
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |output|[string]|false|none|none|
+
+<h2 id="tocS_ModelsResponse">ModelsResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemamodelsresponse"></a>
+<a id="schema_ModelsResponse"></a>
+<a id="tocSmodelsresponse"></a>
+<a id="tocsmodelsresponse"></a>
+
+```json
+[
+  {
+    "id": "model_model-name",
+    "name": "model-name",
+    "description": "Some description about model-name",
+    "tasks": [
+      "text-generation",
+      "qa"
+    ],
+    "build_status": "building",
+    "last_deployment": "2021-03-05T10:31:16Z"
+  }
+]
+
+```
+
+Get models response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Get models response|[[ModelsResponse_inner](#schemamodelsresponse_inner)]|false|none|none|
+
+<h2 id="tocS_ModelResponse">ModelResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemamodelresponse"></a>
+<a id="schema_ModelResponse"></a>
+<a id="tocSmodelresponse"></a>
+<a id="tocsmodelresponse"></a>
+
+```json
+{
+  "id": "model_model-name",
+  "name": "model-name",
+  "description": "Some description about model-name",
+  "tasks": [
+    "text-generation",
+    "qa"
+  ],
+  "build_status": "building",
+  "build_message": "some build related message",
+  "last_deployment": "2021-03-05T10:31:16Z",
+  "model_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/model.bin",
+  "config_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/config.json",
+  "requirements_url": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/requirements.txt"
+}
+
+```
+
+Get model response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string|false|none|none|
+|name|string|false|none|none|
+|description|string|false|none|none|
+|tasks|[string]|false|none|none|
+|build_status|string|false|none|none|
+|build_message|string|false|none|none|
+|last_deployment|string|false|none|none|
+|model_url|string|false|none|none|
+|config_url|string|false|none|none|
+|requirements_url|string|false|none|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|build_status|success|
+|build_status|building|
+|build_status|fail|
+
+<h2 id="tocS_ModelResponse404">ModelResponse404</h2>
+<!-- backwards compatibility -->
+<a id="schemamodelresponse404"></a>
+<a id="schema_ModelResponse404"></a>
+<a id="tocSmodelresponse404"></a>
+<a id="tocsmodelresponse404"></a>
+
+```json
+"model some-model not found"
+
+```
+
+Model 404 response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Model 404 response|string|false|none|none|
+
+<h2 id="tocS_DeleteModelResponse">DeleteModelResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemadeletemodelresponse"></a>
+<a id="schema_DeleteModelResponse"></a>
+<a id="tocSdeletemodelresponse"></a>
+<a id="tocsdeletemodelresponse"></a>
+
+```json
+null
+
+```
+
+Delete model response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Delete model response|any|false|none|none|
+
+<h2 id="tocS_UploadUrlBody">UploadUrlBody</h2>
+<!-- backwards compatibility -->
+<a id="schemauploadurlbody"></a>
+<a id="schema_UploadUrlBody"></a>
+<a id="tocSuploadurlbody"></a>
+<a id="tocsuploadurlbody"></a>
+
+```json
+{
+  "model_name": "some-model"
+}
+
+```
+
+Upload url response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|model_name|string|true|none|3-100 characters. Lowercase ascii with numbers, dashes (-) and underscores (_).|
+
+<h2 id="tocS_UploadUrlResponse">UploadUrlResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemauploadurlresponse"></a>
+<a id="schema_UploadUrlResponse"></a>
+<a id="tocSuploadurlresponse"></a>
+<a id="tocsuploadurlresponse"></a>
+
+```json
+"https://kiri-user-uploads.s3.eu-central-1.amazonaws.com/acc_id/some-model.zip"
+
+```
+
+Upload url response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Upload url response|string|false|none|none|
+
+<h2 id="tocS_ModelsResponse_inner">ModelsResponse_inner</h2>
+<!-- backwards compatibility -->
+<a id="schemamodelsresponse_inner"></a>
+<a id="schema_ModelsResponse_inner"></a>
+<a id="tocSmodelsresponse_inner"></a>
+<a id="tocsmodelsresponse_inner"></a>
+
+```json
+{
+  "id": "model_model-name",
+  "name": "model-name",
+  "description": "Some description about model-name",
+  "tasks": [
+    "text-generation",
+    "qa"
+  ],
+  "build_status": "building",
+  "last_deployment": "2021-03-05T10:31:16Z"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string|false|none|none|
+|name|string|false|none|none|
+|description|string|false|none|none|
+|tasks|[string]|false|none|none|
+|build_status|string|false|none|none|
+|last_deployment|string|false|none|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|build_status|success|
+|build_status|building|
+|build_status|fail|
 
