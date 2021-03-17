@@ -1,5 +1,5 @@
 ---
-title: Kiri API v1.0.0
+title: Backprop API v1.0.0
 language_tabs:
   - shell: shell
   - python: python
@@ -18,7 +18,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="kiri-api">Kiri API v1.0.0</h1>
+<h1 id="backprop-api">Backprop API v1.0.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -30,15 +30,15 @@ Welcome to our API documentation! Things to note:
   
   - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.
   
-  - Every account gets `2000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.
+  - Every account gets `1000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.
   
 If anything is unclear or you find that something is not working as intended, please get in touch!
 
 Base URLs:
 
-* <a href="https://api.kiri.ai">https://api.kiri.ai</a>
+* <a href="https://api.backprop.co">https://api.backprop.co</a>
 
-Email: <a href="mailto:hello@kiri.ai">Support</a> 
+Email: <a href="mailto:hello@backprop.co">Support</a> 
 License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>
 
 # Authentication
@@ -46,7 +46,7 @@ License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a
 * API Key (ApiKeyAuth)
     - Parameter Name: **x-api-key**, in: header. 
 
-<h1 id="kiri-api-tasks">Tasks</h1>
+<h1 id="backprop-api-tasks">Tasks</h1>
 
 Endpoints to call tasks that implement various models for your use cases.
 
@@ -58,7 +58,7 @@ Endpoints to call tasks that implement various models for your use cases.
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/text-vectorisation \
+  --url https://api.backprop.co/text-vectorisation \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -68,7 +68,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"text\":\"iPhone 12 128GB\",\"model\":\"english\"}"
 
@@ -101,7 +101,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/text-vectorisation");
+xhr.open("POST", "https://api.backprop.co/text-vectorisation");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -160,7 +160,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/qa \
+  --url https://api.backprop.co/qa \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -170,7 +170,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"question\":\"What is the meaning of life?\",\"context\":\"The meaning of life is 42.\",\"prev_q\":[\"What is not the meaning of life?\"],\"prev_a\":[\"unknown\"],\"model\":\"english\"}"
 
@@ -210,7 +210,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/qa");
+xhr.open("POST", "https://api.backprop.co/qa");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -273,7 +273,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/text-classification \
+  --url https://api.backprop.co/text-classification \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -283,7 +283,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"text\":\"I am really mad because my product broke.\",\"labels\":[\"product issue\",\"furniture\",\"space\"],\"model\":\"english\"}"
 
@@ -321,7 +321,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/text-classification");
+xhr.open("POST", "https://api.backprop.co/text-classification");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -386,7 +386,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/image-classification \
+  --url https://api.backprop.co/image-classification \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -396,7 +396,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA\",\"labels\":[\"healthy brain\",\"brain with tumor\"],\"model\":\"english\"}"
 
@@ -433,7 +433,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/image-classification");
+xhr.open("POST", "https://api.backprop.co/image-classification");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -496,7 +496,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/text-generation \
+  --url https://api.backprop.co/text-generation \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -506,7 +506,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"text\":\"Geralt knew the signs, the monster was a\",\"min_length\":10,\"max_length\":20,\"temperature\":1,\"top_k\":0,\"top_p\":1,\"repetition_penalty\":1,\"length_penalty\":1,\"num_beams\":1,\"num_generations\":1,\"model\":\"gpt2-large\"}"
 
@@ -548,7 +548,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/text-generation");
+xhr.open("POST", "https://api.backprop.co/text-generation");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -613,7 +613,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/summarisation \
+  --url https://api.backprop.co/summarisation \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -623,7 +623,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"text\":\"Some long text to summarise\",\"model\":\"english\"}"
 
@@ -656,7 +656,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/summarisation");
+xhr.open("POST", "https://api.backprop.co/summarisation");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -712,7 +712,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/emotion \
+  --url https://api.backprop.co/emotion \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -722,7 +722,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"text\":\"I hope this works\",\"model\":\"english\"}"
 
@@ -755,7 +755,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/emotion");
+xhr.open("POST", "https://api.backprop.co/emotion");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -803,7 +803,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
-<h1 id="kiri-api-models">Models</h1>
+<h1 id="backprop-api-models">Models</h1>
 
 Endpoints to view, upload and delete models
 
@@ -815,7 +815,7 @@ Endpoints to view, upload and delete models
 
 ```shell
 curl --request GET \
-  --url https://api.kiri.ai/models \
+  --url https://api.backprop.co/models \
   --header 'Accept: application/json' \
   --header 'x-api-key: API_KEY'
 ```
@@ -823,7 +823,7 @@ curl --request GET \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 headers = {
     'Accept': "application/json",
@@ -850,7 +850,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://api.kiri.ai/models");
+xhr.open("GET", "https://api.backprop.co/models");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
 
@@ -906,7 +906,7 @@ ApiKeyAuth
 
 ```shell
 curl --request GET \
-  --url https://api.kiri.ai/models/string \
+  --url https://api.backprop.co/models/string \
   --header 'Accept: application/json' \
   --header 'x-api-key: API_KEY'
 ```
@@ -914,7 +914,7 @@ curl --request GET \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 headers = {
     'Accept': "application/json",
@@ -941,7 +941,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://api.kiri.ai/models/string");
+xhr.open("GET", "https://api.backprop.co/models/string");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
 
@@ -1000,7 +1000,7 @@ ApiKeyAuth
 
 ```shell
 curl --request DELETE \
-  --url https://api.kiri.ai/models/string \
+  --url https://api.backprop.co/models/string \
   --header 'Accept: application/json' \
   --header 'x-api-key: API_KEY'
 ```
@@ -1008,7 +1008,7 @@ curl --request DELETE \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 headers = {
     'Accept': "application/json",
@@ -1035,7 +1035,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("DELETE", "https://api.kiri.ai/models/string");
+xhr.open("DELETE", "https://api.backprop.co/models/string");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
 
@@ -1080,7 +1080,7 @@ ApiKeyAuth
 
 ```shell
 curl --request POST \
-  --url https://api.kiri.ai/upload-url \
+  --url https://api.backprop.co/upload-url \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
@@ -1090,7 +1090,7 @@ curl --request POST \
 ```python
 import http.client
 
-conn = http.client.HTTPSConnection("api.kiri.ai")
+conn = http.client.HTTPSConnection("api.backprop.co")
 
 payload = "{\"model_name\":\"some-model\"}"
 
@@ -1122,7 +1122,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.kiri.ai/upload-url");
+xhr.open("POST", "https://api.backprop.co/upload-url");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-api-key", "API_KEY");
@@ -1141,7 +1141,7 @@ xhr.send(data);
   
   The maximum supported size of the zip file is 5GB.
   
-It is the simplest to use our [python library](https://github.com/kiri-ai/kiri) for this functionality.
+It is the simplest to use our [python library](https://github.com/backprop-ai/backprop) for this functionality.
 
 > Body parameter
 
