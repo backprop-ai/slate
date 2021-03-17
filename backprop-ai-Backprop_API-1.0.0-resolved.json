@@ -1,0 +1,1516 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Backprop API",
+    "description": "Welcome to our API documentation! Things to note:\n\n  - Most task endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different `body` and `response` variants are shown in the respective `single` and `batch` schemas.\n  \n  - All endpoints require authentication with your API key in the `x-api-key` header.\n  \n  - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.\n  \n  - Every account gets `1000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.\n  \nIf anything is unclear or you find that something is not working as intended, please get in touch!\n",
+    "contact": {
+      "email": "hello@backprop.co"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.backprop.co",
+      "description": "Backprop API"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tasks",
+      "description": "Endpoints to call tasks that implement various models for your use cases."
+    },
+    {
+      "name": "Models",
+      "description": "Endpoints to view, upload and delete models"
+    }
+  ],
+  "paths": {
+    "/text-vectorisation": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "text vectorisation",
+        "description": "vectorises string or list of strings",
+        "operationId": "text-vectorisation",
+        "requestBody": {
+          "description": "text or list of text to vectorise",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextVectorisationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successfully vectorised",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextVectorisationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/qa": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "question answering",
+        "description": "Performs QA on question, context, previous questions and previous answers. Answers \"unknown\" if the question cannot be answered.",
+        "operationId": "qa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QABody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful QA",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QAResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text-classification": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "text classification",
+        "description": "Performs classification on provided text and labels.",
+        "operationId": "text-classification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextClassificationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful classification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextClassificationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image-classification": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "zero shot image classification",
+        "description": "Performs zero shot image classification on provided base64 encoded image and labels. The probabilities predicted for the labels will always sum to 100%.",
+        "operationId": "image-classification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImageClassificationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful classification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageClassificationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text-generation": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "text generation",
+        "description": "Performs generation on the provided text with the specified parameters",
+        "operationId": "text-generation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenerationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful generation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextGenerationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/summarisation": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "text summarisation",
+        "description": "Performs summarisation on the provided text",
+        "operationId": "summarisation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummarisationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful summarisation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummarisationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/emotion": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "emotion detection",
+        "description": "Performs emotion detection on the provided text. The response is a string of comma separated emotions. The emotions are from: neutral, admiration, approval, annoyance, gratitude, disapproval, amusement, curiosity, love, optimism, disappointment, joy, realization, anger, sadness, confusion, caring, excitement, surprise, disgust, desire, fear, remorse, embarrassment, nervousness, pride, relief, grief.\n",
+        "operationId": "emotion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmotionBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful emotion detection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmotionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "tags": [
+          "Models"
+        ],
+        "summary": "get models",
+        "description": "Gets a list of global and user models. Some info about global models is hidden.",
+        "operationId": "get-models",
+        "parameters": [
+          {
+            "name": "include_global",
+            "in": "query",
+            "description": "Whether to include global models in the list",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of models",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models/{model}": {
+      "get": {
+        "tags": [
+          "Models"
+        ],
+        "summary": "get model",
+        "description": "Gets detailed information about a model. Cannot query global models.",
+        "operationId": "get-model",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "description": "Name of the model",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "detailed information about a model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "model not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelResponse404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Models"
+        ],
+        "summary": "delete model",
+        "description": "deletes a model",
+        "operationId": "delete-model",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "description": "Name of the model",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "model deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteModelResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "model not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelResponse404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upload-url": {
+      "post": {
+        "tags": [
+          "Models"
+        ],
+        "summary": "get upload url for model",
+        "description": "(BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.\n  The zip file must contain exactly three files (no folders) with the specified names:\n  \n  * model.bin (an initiated model on CPU pickled with dill)\n  * config.json (with description (value is string) and task (value is list of strings) keys)\n  * requirements.txt (a python requirements file with any runtime dependencies)\n  \n  The maximum supported size of the zip file is 5GB.\n  \nIt is the simplest to use our [python library](https://github.com/backprop-ai/backprop) for this functionality.\n",
+        "operationId": "upload-url",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadUrlBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "link for PUT request with the zip file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadUrlResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TextVectorisationBody": {
+        "title": "Text vectorisation body",
+        "description": "Text vectorisation body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextVectorisationSingle"
+          },
+          {
+            "$ref": "#/components/schemas/TextVectorisationBatch"
+          }
+        ]
+      },
+      "TextVectorisationSingle": {
+        "title": "Single item vectorisation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "iPhone 12 128GB"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * Name of your own uploaded model\n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english",
+              "multilingual"
+            ]
+          }
+        },
+        "description": "Single item vectorisation"
+      },
+      "TextVectorisationBatch": {
+        "title": "Batch text vectorisation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "array",
+            "example": [
+              "iPhone 12 128GB",
+              "RTX 3090"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * Name of your own uploaded model\n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english",
+              "multilingual"
+            ]
+          }
+        },
+        "description": "Batch text vectorisation"
+      },
+      "TextVectorisationResponse": {
+        "title": "Vectorisation response",
+        "description": "Vectorisation responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextVectorisationSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/TextVectorisationBatchResponse"
+          }
+        ]
+      },
+      "TextVectorisationSingleResponse": {
+        "title": "Single item text vectorisation response",
+        "type": "object",
+        "properties": {
+          "vector": {
+            "type": "array",
+            "example": [
+              0.92949192,
+              0.2312301
+            ],
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      },
+      "TextVectorisationBatchResponse": {
+        "title": "Batch text vectorisation response",
+        "type": "object",
+        "properties": {
+          "vectorList": {
+            "type": "array",
+            "example": [
+              [
+                0.92949192,
+                0.2312301
+              ],
+              [
+                0.82939192,
+                0.5312701
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "format": "float"
+              }
+            }
+          }
+        }
+      },
+      "QABody": {
+        "title": "QA body",
+        "description": "QA body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/QASingle"
+          },
+          {
+            "$ref": "#/components/schemas/QABatch"
+          }
+        ]
+      },
+      "QASingle": {
+        "title": "Single item QA",
+        "required": [
+          "context",
+          "question"
+        ],
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "question to answer",
+            "example": "What is the meaning of life?"
+          },
+          "context": {
+            "type": "string",
+            "description": "context to answer based on",
+            "example": "The meaning of life is 42."
+          },
+          "prev_q": {
+            "type": "array",
+            "example": [
+              "What is not the meaning of life?"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "prev_a": {
+            "type": "array",
+            "example": [
+              "unknown"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English only QA\n  * Name of your own uploaded model\n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Single item QA"
+      },
+      "QABatch": {
+        "title": "Batch QA",
+        "required": [
+          "context",
+          "question"
+        ],
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "array",
+            "description": "list of questions to answer",
+            "example": [
+              "What is the meaning of life?",
+              "Where does Sally live?"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "context": {
+            "type": "array",
+            "description": "context to answer based on",
+            "example": [
+              "The meaning of life is 42.",
+              "Sally lives in London"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "prev_q": {
+            "type": "array",
+            "example": [
+              [
+                "What is not the meaning of life?"
+              ],
+              [
+                "Where did Sally go to school?"
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "prev_a": {
+            "type": "array",
+            "example": [
+              [
+                "unknown"
+              ],
+              [
+                "unknown"
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English only QA\n  * Name of your own uploaded model\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Batch QA"
+      },
+      "QAResponse": {
+        "title": "QA response",
+        "description": "QA responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/QASingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/QABatchResponse"
+          }
+        ]
+      },
+      "QASingleResponse": {
+        "title": "Single item QA response",
+        "type": "object",
+        "properties": {
+          "answer": {
+            "type": "string",
+            "example": "42"
+          }
+        }
+      },
+      "QABatchResponse": {
+        "title": "Batch QA response",
+        "type": "object",
+        "properties": {
+          "answer": {
+            "type": "array",
+            "example": [
+              "42",
+              "London"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "TextClassificationBody": {
+        "title": "Text classification body",
+        "description": "Text classification body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextClassificationSingle"
+          },
+          {
+            "$ref": "#/components/schemas/TextClassificationBatch"
+          }
+        ]
+      },
+      "TextClassificationSingle": {
+        "title": "Single item Text Classification",
+        "required": [
+          "labels",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "text to classify",
+            "example": "I am really mad because my product broke."
+          },
+          "labels": {
+            "type": "array",
+            "description": "labels to predict probabilities for",
+            "example": [
+              "product issue",
+              "furniture",
+              "space"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English only classification\n  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.\n  * Name of your own uploaded model\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english",
+              "multilingual"
+            ]
+          }
+        },
+        "description": "Single item Text Classification"
+      },
+      "TextClassificationBatch": {
+        "title": "Batch Text Classification",
+        "required": [
+          "labels",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "array",
+            "description": "list text to classify",
+            "example": [
+              "I am really mad because my product broke.",
+              "I would like to collaborate with you on social media"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "labels": {
+            "type": "array",
+            "description": "list of list of labels to predict probabilities for",
+            "example": [
+              [
+                "product issue",
+                "furniture",
+                "space"
+              ],
+              [
+                "product issue",
+                "furniture",
+                "sales"
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English only classification\n  * `multilingual` - Multilingual classification in 100+ languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Basque, Belarusian, Bengali, Bengali Romanized, Bosnian, Breton, Bulgarian, Burmese, Burmese, Catalan, Chinese (Simplified), Chinese (Traditional), Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Hausa, Hebrew, Hindi, Hindi Romanized, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Macedonian, Malagasy, Malay, Malayalam, Marathi, Mongolian, Nepali, Norwegian, Oriya, Oromo, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskri, Scottish, Gaelic, Serbian, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tamil, Tamil Romanized, Telugu, Telugu Romanized, Thai, Turkish, Ukrainian, Urdu, Urdu Romanized, Uyghur, Uzbek, Vietnamese, Welsh, Western, Frisian, Xhosa, Yiddish.\n  * Name of your own uploaded model\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english",
+              "multilingual"
+            ]
+          }
+        },
+        "description": "Batch Text Classification"
+      },
+      "TextClassificationResponse": {
+        "title": "Text classification response",
+        "description": "Text classification responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextClassificationSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/TextClassificationBatchResponse"
+          }
+        ]
+      },
+      "TextClassificationSingleResponse": {
+        "title": "Single item text classification response",
+        "type": "object",
+        "properties": {
+          "probabilities": {
+            "type": "object",
+            "description": "dictionary where the keys are your labels and values are probabilities",
+            "example": {
+              "product issue": 0.98,
+              "furniture": 0.1,
+              "space": 0.05
+            }
+          }
+        }
+      },
+      "TextClassificationBatchResponse": {
+        "title": "Batch text classification response",
+        "type": "object",
+        "properties": {
+          "probabilities": {
+            "type": "array",
+            "description": "list of dictionaries where the keys are your labels and values are probabilities",
+            "example": [
+              {
+                "product issue": 0.98,
+                "furniture": 0.1,
+                "space": 0.05
+              },
+              {
+                "product issue": 0.2,
+                "furniture": 0.03,
+                "sales": 0.87
+              }
+            ],
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "ImageClassificationBody": {
+        "title": "Image classification body",
+        "description": "Image classification body",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ImageClassificationSingle"
+          }
+        ]
+      },
+      "ImageClassificationSingle": {
+        "title": "Single item image classification",
+        "required": [
+          "image",
+          "labels"
+        ],
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string",
+            "description": "base64 encoded image",
+            "example": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"
+          },
+          "labels": {
+            "type": "array",
+            "description": "labels to predict probabilities for",
+            "example": [
+              "healthy brain",
+              "brain with tumor"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - Classification with English labels\n  * Name of your own uploaded model\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Single item image classification"
+      },
+      "ImageClassificationResponse": {
+        "title": "Image classification response",
+        "description": "Image classification response",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ImageClassificationSingleResponse"
+          }
+        ]
+      },
+      "ImageClassificationSingleResponse": {
+        "title": "Single item image classification response",
+        "type": "object",
+        "properties": {
+          "probabilities": {
+            "type": "object",
+            "description": "dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.",
+            "example": {
+              "brain with tumor": 0.98,
+              "healthy brain": 0.02
+            }
+          }
+        }
+      },
+      "TextGenerationBody": {
+        "title": "Text generation body",
+        "description": "Generation body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextGenerationSingle"
+          },
+          {
+            "$ref": "#/components/schemas/TextGenerationBatch"
+          }
+        ]
+      },
+      "TextGenerationSingle": {
+        "title": "Single item text generation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "text to generate from",
+            "example": "Geralt knew the signs, the monster was a"
+          },
+          "min_length": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "minimum number of tokens to generate",
+            "example": 10,
+            "default": 10
+          },
+          "max_length": {
+            "type": "integer",
+            "description": "maximum number of tokens to generate",
+            "example": 20,
+            "default": 20
+          },
+          "temperature": {
+            "minimum": 0,
+            "type": "number",
+            "description": "value that alters softmax probabilities. 0.0 is deterministic. As the temperature gets higher, the generated tokens get more random.",
+            "example": 1,
+            "default": 1
+          },
+          "top_k": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "sampling strategy in which probabilities are redistributed among top k most-likely tokens. 0 is a special value where all tokens are considered.",
+            "example": 0,
+            "default": 0
+          },
+          "top_p": {
+            "maximum": 1,
+            "minimum": 0.01,
+            "type": "number",
+            "description": "Sampling strategy in which probabilities are distributed among set of words with combined probability greater than p.",
+            "example": 1,
+            "default": 1
+          },
+          "repetition_penalty": {
+            "minimum": 0,
+            "type": "number",
+            "description": "Penalty to be applied to tokens present in the text and tokens already generated in the sequence. Values higher than 1.0 penalise repetition, while lower than 1.0 encourage it.",
+            "example": 1,
+            "default": 1
+          },
+          "length_penalty": {
+            "minimum": 0,
+            "type": "number",
+            "description": "Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.",
+            "example": 1,
+            "default": 1
+          },
+          "num_beams": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of beams to be used in beam search. (1 is no beam search)",
+            "example": 1,
+            "default": 1
+          },
+          "num_generations": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of times to do generation for input.",
+            "example": 1,
+            "default": 1
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `gpt2-large` - An optimised large version of gpt2.\n  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.\n  * Name of your own uploaded model\n  \n",
+            "example": "gpt2-large",
+            "default": "gpt2-large",
+            "enum": [
+              "gpt2-large",
+              "t5-base-qa-summary-emotion"
+            ]
+          }
+        },
+        "description": "Single item text generation"
+      },
+      "TextGenerationBatch": {
+        "title": "Batch text generation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "array",
+            "description": "text to generate from",
+            "example": [
+              "Geralt knew the signs, the monster was a",
+              "c: Elon Musk is an entrepreneur born in 1971. q: Who is Elon Musk? a: an entrepreneur q: When was he born? a: "
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "min_length": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "minimum number of tokens to generate",
+            "example": 10,
+            "default": 10
+          },
+          "max_length": {
+            "type": "integer",
+            "description": "maximum number of tokens to generate",
+            "example": 20,
+            "default": 20
+          },
+          "temperature": {
+            "minimum": 0,
+            "type": "number",
+            "description": "value that alters softmax probabilities. 0.0 is deterministic. As the temperature gets higher, the generated tokens get more random.",
+            "example": 1,
+            "default": 1
+          },
+          "top_k": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "sampling strategy in which probabilities are redistributed among top k most-likely tokens. 0 is a special value where all tokens are considered.",
+            "example": 0,
+            "default": 0
+          },
+          "top_p": {
+            "maximum": 1,
+            "minimum": 0.01,
+            "type": "number",
+            "description": "Sampling strategy in which probabilities are distributed among set of words with combined probability greater than p.",
+            "example": 1,
+            "default": 1
+          },
+          "repetition_penalty": {
+            "minimum": 0,
+            "type": "number",
+            "description": "Penalty to be applied to tokens present in the text and tokens already generated in the sequence. Values higher than 1.0 penalise repetition, while lower than 1.0 encourage it.",
+            "example": 1,
+            "default": 1
+          },
+          "length_penalty": {
+            "minimum": 0,
+            "type": "number",
+            "description": "Penalty applied to overall sequence length. Set to greater than 1.0 for longer sequences or smaller than 1.0 for shorter ones.",
+            "example": 1,
+            "default": 1
+          },
+          "num_beams": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of beams to be used in beam search. (1 is no beam search)",
+            "example": 1,
+            "default": 1
+          },
+          "num_generations": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of times to do generation for input.",
+            "example": 1,
+            "default": 1
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `gpt2-large` - An optimised large version of gpt2.\n  * `t5-base-qa-summary-emotion` - The T5 base model trained for question answering, summarisation and emotion detection.\n  * Name of your own uploaded model\n  \n",
+            "example": "gpt2-large",
+            "default": "gpt2-large",
+            "enum": [
+              "gpt2-large",
+              "t5-base-qa-summary-emotion"
+            ]
+          }
+        },
+        "description": "Batch text generation"
+      },
+      "TextGenerationResponse": {
+        "title": "Text generation response",
+        "description": "Text generation responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextGenerationSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/TextGenerationBatchResponse"
+          }
+        ]
+      },
+      "TextGenerationSingleResponse": {
+        "title": "Single item text generation response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "string",
+            "example": "Geralt knew the signs, the monster was a vampire that day; after the siege her companions"
+          }
+        }
+      },
+      "TextGenerationBatchResponse": {
+        "title": "Batch text generation response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "array",
+            "example": [
+              "Geralt knew the signs, the monster was a vampire that day; after the siege her companions",
+              "1971"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SummarisationBody": {
+        "title": "Summarisation body",
+        "description": "Summarisation body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SummarisationSingle"
+          },
+          {
+            "$ref": "#/components/schemas/SummarisationBatch"
+          }
+        ]
+      },
+      "SummarisationSingle": {
+        "title": "Single item summarisation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "Some long text to summarise"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English text summarisation\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Single item summarisation"
+      },
+      "SummarisationBatch": {
+        "title": "Batch summarisation",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "array",
+            "example": [
+              "Some long text to summarise",
+              "Some more long text that needs summarising"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English text summarisation\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Batch summarisation"
+      },
+      "SummarisationResponse": {
+        "title": "Summarisation response",
+        "description": "Summarisation responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SummarisationSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/SummarisationBatchResponse"
+          }
+        ]
+      },
+      "SummarisationSingleResponse": {
+        "title": "Single item summarisation response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "string",
+            "example": "Summary of long text"
+          }
+        }
+      },
+      "SummarisationBatchResponse": {
+        "title": "Batch summarisation response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "array",
+            "example": [
+              "Summary of long text",
+              "Summary of some more long text"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "EmotionBody": {
+        "title": "Emotion body",
+        "description": "Emotion body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/EmotionSingle"
+          },
+          {
+            "$ref": "#/components/schemas/EmotionBatch"
+          }
+        ]
+      },
+      "EmotionSingle": {
+        "title": "Single item emotion detection",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "I hope this works"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English text emotion detection\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Single item emotion detection"
+      },
+      "EmotionBatch": {
+        "title": "Batch emotion detection",
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "array",
+            "example": [
+              "I hope this works",
+              "I'll be most upset if things go wrong"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `english` - English text emotion detection\n  \n",
+            "example": "english",
+            "default": "english",
+            "enum": [
+              "english"
+            ]
+          }
+        },
+        "description": "Batch emotion detection"
+      },
+      "EmotionResponse": {
+        "title": "Emotion detection response",
+        "description": "Emotion detection responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/EmotionSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/EmotionBatchResponse"
+          }
+        ]
+      },
+      "EmotionSingleResponse": {
+        "title": "Single item emotion detection response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "string",
+            "example": "optimism"
+          }
+        }
+      },
+      "EmotionBatchResponse": {
+        "title": "Batch emotion detection response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "array",
+            "example": [
+              "optimism",
+              "disappointment, sadness"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ModelsResponse": {
+        "title": "Get models response",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModelsResponse_inner"
+        }
+      },
+      "ModelResponse": {
+        "title": "Get model response",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "model_model-name"
+          },
+          "name": {
+            "type": "string",
+            "example": "model-name"
+          },
+          "description": {
+            "type": "string",
+            "example": "Some description about model-name"
+          },
+          "tasks": {
+            "type": "array",
+            "example": [
+              "text-generation",
+              "qa"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "build_status": {
+            "type": "string",
+            "example": "building",
+            "enum": [
+              "success",
+              "building",
+              "fail"
+            ]
+          },
+          "build_message": {
+            "type": "string",
+            "example": "some build related message"
+          },
+          "last_deployment": {
+            "type": "string",
+            "example": "2021-03-05T10:31:16Z"
+          },
+          "model_url": {
+            "type": "string",
+            "example": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/model.bin"
+          },
+          "config_url": {
+            "type": "string",
+            "example": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/config.json"
+          },
+          "requirements_url": {
+            "type": "string",
+            "example": "https://kiri-user-models.s3.eu-central-1.amazonaws.com/acc_id/some-model/requirements.txt"
+          }
+        }
+      },
+      "ModelResponse404": {
+        "title": "Model 404 response",
+        "type": "string",
+        "example": "model some-model not found"
+      },
+      "DeleteModelResponse": {
+        "title": "Delete model response"
+      },
+      "UploadUrlBody": {
+        "title": "Upload url response",
+        "required": [
+          "model_name"
+        ],
+        "type": "object",
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "description": "3-100 characters. Lowercase ascii with numbers, dashes (-) and underscores (_).",
+            "example": "some-model"
+          }
+        },
+        "description": "Upload url response"
+      },
+      "UploadUrlResponse": {
+        "title": "Upload url response",
+        "type": "string",
+        "example": "https://kiri-user-uploads.s3.eu-central-1.amazonaws.com/acc_id/some-model.zip"
+      },
+      "ModelsResponse_inner": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "model_model-name"
+          },
+          "name": {
+            "type": "string",
+            "example": "model-name"
+          },
+          "description": {
+            "type": "string",
+            "example": "Some description about model-name"
+          },
+          "tasks": {
+            "type": "array",
+            "example": [
+              "text-generation",
+              "qa"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "build_status": {
+            "type": "string",
+            "example": "building",
+            "enum": [
+              "success",
+              "building",
+              "fail"
+            ]
+          },
+          "last_deployment": {
+            "type": "string",
+            "example": "2021-03-05T10:31:16Z"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    }
+  }
+}
