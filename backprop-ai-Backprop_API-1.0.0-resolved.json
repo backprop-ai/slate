@@ -551,7 +551,7 @@
         "title": "Batch text vectorisation response",
         "type": "object",
         "properties": {
-          "vectorList": {
+          "vector": {
             "type": "array",
             "example": [
               [
@@ -1067,7 +1067,7 @@
         "title": "Batch image vectorisation response",
         "type": "object",
         "properties": {
-          "vectorList": {
+          "vector": {
             "type": "array",
             "example": [
               [

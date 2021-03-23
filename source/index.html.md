@@ -1453,7 +1453,7 @@ Single item text vectorisation response
 
 ```json
 {
-  "vectorList": [
+  "vector": [
     [
       0.92949192,
       0.2312301
@@ -1473,7 +1473,7 @@ Batch text vectorisation response
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|vectorList|[array]|false|none|none|
+|vector|[array]|false|none|none|
 
 <h2 id="tocS_QABody">QABody</h2>
 <!-- backwards compatibility -->
@@ -2196,7 +2196,7 @@ Single item image vectorisation response
 
 ```json
 {
-  "vectorList": [
+  "vector": [
     [
       0.92949192,
       0.2312301
@@ -2216,7 +2216,7 @@ Batch image vectorisation response
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|vectorList|[array]|false|none|none|
+|vector|[array]|false|none|none|
 
 <h2 id="tocS_TextGenerationBody">TextGenerationBody</h2>
 <!-- backwards compatibility -->
