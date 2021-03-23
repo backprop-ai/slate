@@ -279,7 +279,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-5ba24fe6.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all_nosearch-ec00d1ce.js"></script>
 
@@ -320,6 +320,9 @@
                   </li>
                   <li>
                     <a href="#zero-shot-image-classification" class="toc-h2 toc-link" data-title="zero shot image classification">zero shot image classification</a>
+                  </li>
+                  <li>
+                    <a href="#image-vectorisation" class="toc-h2 toc-link" data-title="image vectorisation">image vectorisation</a>
                   </li>
                   <li>
                     <a href="#text-generation" class="toc-h2 toc-link" data-title="text generation">text generation</a>
@@ -417,6 +420,24 @@
                   </li>
                   <li>
                     <a href="#tocS_ImageClassificationSingleResponse" class="toc-h2 toc-link" data-title="ImageClassificationSingleResponse">ImageClassificationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationBody" class="toc-h2 toc-link" data-title="ImageVectorisationBody">ImageVectorisationBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationSingle" class="toc-h2 toc-link" data-title="ImageVectorisationSingle">ImageVectorisationSingle</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationBatch" class="toc-h2 toc-link" data-title="ImageVectorisationBatch">ImageVectorisationBatch</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationResponse" class="toc-h2 toc-link" data-title="ImageVectorisationResponse">ImageVectorisationResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationSingleResponse" class="toc-h2 toc-link" data-title="ImageVectorisationSingleResponse">ImageVectorisationSingleResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ImageVectorisationBatchResponse" class="toc-h2 toc-link" data-title="ImageVectorisationBatchResponse">ImageVectorisationBatchResponse</a>
                   </li>
                   <li>
                     <a href="#tocS_TextGenerationBody" class="toc-h2 toc-link" data-title="TextGenerationBody">TextGenerationBody</a>
@@ -1032,6 +1053,123 @@ ApiKeyAuth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>successful classification</td>
 <td><a href="#schemaimageclassificationresponse">ImageClassificationResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+<h2 id='image-vectorisation'>image vectorisation</h2>
+<p><a id="opIdimage-vectorisation"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.backprop.co/image-vectorisation <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"image":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA","model":"clip"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.backprop.co"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">image</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">clip</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/image-vectorisation"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">image</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">clip</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.backprop.co/image-vectorisation</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /image-vectorisation</code></p>
+
+<p>vectorises image or list of images that are base64 encoded</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="image-vectorisation-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaimagevectorisationbody">ImageVectorisationBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="image-vectorisation-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successfully vectorised</td>
+<td><a href="#schemaimagevectorisationresponse">ImageVectorisationResponse</a></td>
 </tr>
 </tbody></table>
 
@@ -1959,7 +2097,7 @@ ApiKeyAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model</td>
+<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * <code>clip</code> - OpenAI CLIP, aligned with image vectors<br>  * Name of your own uploaded model</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -1976,6 +2114,10 @@ ApiKeyAuth
 <tr>
 <td>model</td>
 <td>multilingual</td>
+</tr>
+<tr>
+<td>model</td>
+<td>clip</td>
 </tr>
 </tbody></table>
 
@@ -2019,7 +2161,7 @@ ApiKeyAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model</td>
+<td>Model to use:<br>  * <code>english</code> - English optimised vectorisation<br>  * <code>multilingual</code> - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * <code>clip</code> - OpenAI CLIP, aligned with image vectors<br>  * Name of your own uploaded model</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -2036,6 +2178,10 @@ ApiKeyAuth
 <tr>
 <td>model</td>
 <td>multilingual</td>
+</tr>
+<tr>
+<td>model</td>
+<td>clip</td>
 </tr>
 </tbody></table>
 
@@ -3153,6 +3299,343 @@ ApiKeyAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_ImageVectorisationBody">ImageVectorisationBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationbody"></a>
+<a id="schema_ImageVectorisationBody"></a>
+<a id="tocSimagevectorisationbody"></a>
+<a id="tocsimagevectorisationbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Image vectorisation body</p>
+<h3 id='properties-23'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Image vectorisation body</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Image vectorisation body variants for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaimagevectorisationsingle">ImageVectorisationSingle</a></td>
+<td>false</td>
+<td>none</td>
+<td>Single item vectorisation</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaimagevectorisationbatch">ImageVectorisationBatch</a></td>
+<td>false</td>
+<td>none</td>
+<td>Batch image vectorisation</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageVectorisationSingle">ImageVectorisationSingle</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationsingle"></a>
+<a id="schema_ImageVectorisationSingle"></a>
+<a id="tocSimagevectorisationsingle"></a>
+<a id="tocsimagevectorisationsingle"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item vectorisation</p>
+<h3 id='properties-24'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>clip</code><br>  * Name of your own uploaded model</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>clip</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageVectorisationBatch">ImageVectorisationBatch</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationbatch"></a>
+<a id="schema_ImageVectorisationBatch"></a>
+<a id="tocSimagevectorisationbatch"></a>
+<a id="tocsimagevectorisationbatch"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch image vectorisation</p>
+<h3 id='properties-25'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Model to use:<br>  * <code>clip</code><br>  * Name of your own uploaded model</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>clip</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageVectorisationResponse">ImageVectorisationResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationresponse"></a>
+<a id="schema_ImageVectorisationResponse"></a>
+<a id="tocSimagevectorisationresponse"></a>
+<a id="tocsimagevectorisationresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Vectorisation response</p>
+<h3 id='properties-26'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Vectorisation response</td>
+<td>any</td>
+<td>false</td>
+<td>none</td>
+<td>Vectorisation responses for single and batch requests</td>
+</tr>
+</tbody></table>
+
+<p>oneOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaimagevectorisationsingleresponse">ImageVectorisationSingleResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>xor</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemaimagevectorisationbatchresponse">ImageVectorisationBatchResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageVectorisationSingleResponse">ImageVectorisationSingleResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationsingleresponse"></a>
+<a id="schema_ImageVectorisationSingleResponse"></a>
+<a id="tocSimagevectorisationsingleresponse"></a>
+<a id="tocsimagevectorisationsingleresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+    </span><span class="mf">0.2312301</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Single item image vectorisation response</p>
+<h3 id='properties-27'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vector</td>
+<td>[number]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ImageVectorisationBatchResponse">ImageVectorisationBatchResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimagevectorisationbatchresponse"></a>
+<a id="schema_ImageVectorisationBatchResponse"></a>
+<a id="tocSimagevectorisationbatchresponse"></a>
+<a id="tocsimagevectorisationbatchresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"vectorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.92949192</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.2312301</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="mf">0.82939192</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.5312701</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Batch image vectorisation response</p>
+<h3 id='properties-28'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vectorList</td>
+<td>[array]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_TextGenerationBody">TextGenerationBody</h2>
 
 <!-- backwards compatibility -->
@@ -3177,7 +3660,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Text generation body</p>
-<h3 id='properties-23'>Properties</h3>
+<h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3260,7 +3743,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item text generation</p>
-<h3 id='properties-24'>Properties</h3>
+<h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3348,7 +3831,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>gpt2-large</code> - An optimised large version of gpt2.<br>  * <code>t5-base-qa-summary-emotion</code> - The T5 base model trained for question answering, summarisation and emotion detection.<br>  * Name of your own uploaded model</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3392,7 +3875,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch text generation</p>
-<h3 id='properties-25'>Properties</h3>
+<h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3480,7 +3963,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>gpt2-large</code> - An optimised large version of gpt2.<br>  * <code>t5-base-qa-summary-emotion</code> - The T5 base model trained for question answering, summarisation and emotion detection.<br>  * Name of your own uploaded model</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3511,7 +3994,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Text generation response</p>
-<h3 id='properties-26'>Properties</h3>
+<h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3584,7 +4067,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item text generation response</p>
-<h3 id='properties-27'>Properties</h3>
+<h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3620,7 +4103,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch text generation response</p>
-<h3 id='properties-28'>Properties</h3>
+<h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3654,7 +4137,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Summarisation body</p>
-<h3 id='properties-29'>Properties</h3>
+<h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3728,7 +4211,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item summarisation</p>
-<h3 id='properties-30'>Properties</h3>
+<h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3753,7 +4236,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>english</code> - English text summarisation</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3784,7 +4267,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch summarisation</p>
-<h3 id='properties-31'>Properties</h3>
+<h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3809,7 +4292,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>english</code> - English text summarisation</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3836,7 +4319,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Summarisation response</p>
-<h3 id='properties-32'>Properties</h3>
+<h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3909,7 +4392,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item summarisation response</p>
-<h3 id='properties-33'>Properties</h3>
+<h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3945,7 +4428,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch summarisation response</p>
-<h3 id='properties-34'>Properties</h3>
+<h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3979,7 +4462,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Emotion body</p>
-<h3 id='properties-35'>Properties</h3>
+<h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4053,7 +4536,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item emotion detection</p>
-<h3 id='properties-36'>Properties</h3>
+<h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4078,7 +4561,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>english</code> - English text emotion detection</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4109,7 +4592,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch emotion detection</p>
-<h3 id='properties-37'>Properties</h3>
+<h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4134,7 +4617,7 @@ ApiKeyAuth
 <td>Model to use:<br>  * <code>english</code> - English text emotion detection</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4161,7 +4644,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Emotion detection response</p>
-<h3 id='properties-38'>Properties</h3>
+<h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4234,7 +4717,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Single item emotion detection response</p>
-<h3 id='properties-39'>Properties</h3>
+<h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4270,7 +4753,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Batch emotion detection response</p>
-<h3 id='properties-40'>Properties</h3>
+<h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4313,7 +4796,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Get models response</p>
-<h3 id='properties-41'>Properties</h3>
+<h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4358,7 +4841,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Get model response</p>
-<h3 id='properties-42'>Properties</h3>
+<h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4439,7 +4922,7 @@ ApiKeyAuth
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4472,7 +4955,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Model 404 response</p>
-<h3 id='properties-43'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4503,7 +4986,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Delete model response</p>
-<h3 id='properties-44'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4536,7 +5019,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Upload url response</p>
-<h3 id='properties-45'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4567,7 +5050,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Upload url response</p>
-<h3 id='properties-46'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4606,7 +5089,7 @@ ApiKeyAuth
   </span><span class="nl">"last_deployment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-05T10:31:16Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-47'>Properties</h3>
+</span></code></pre></div><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4659,7 +5142,7 @@ ApiKeyAuth
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
