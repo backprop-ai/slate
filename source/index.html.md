@@ -488,6 +488,108 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
+## image vectorisation
+
+<a id="opIdimage-vectorisation"></a>
+
+> Code samples
+
+```shell
+curl --request POST \
+  --url https://api.backprop.co/image-vectorisation \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: API_KEY' \
+  --data '{"image":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA","model":"clip"}'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.backprop.co")
+
+payload = "{\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA\",\"model\":\"clip\"}"
+
+headers = {
+    'Content-Type': "application/json",
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("POST", "/image-vectorisation", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = JSON.stringify({
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+  "model": "clip"
+});
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://api.backprop.co/image-vectorisation");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`POST /image-vectorisation`
+
+vectorises image or list of images that are base64 encoded
+
+> Body parameter
+
+```json
+{
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+  "model": "clip"
+}
+```
+
+<h3 id="image-vectorisation-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[ImageVectorisationBody](#schemaimagevectorisationbody)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "vector": [
+    0.92949192,
+    0.2312301
+  ]
+}
+```
+
+<h3 id="image-vectorisation-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successfully vectorised|[ImageVectorisationResponse](#schemaimagevectorisationresponse)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 ## text generation
 
 <a id="opIdtext-generation"></a>
@@ -1235,7 +1337,7 @@ Single item vectorisation
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |text|string|true|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model|
+|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * `clip` - OpenAI CLIP, aligned with image vectors<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1243,6 +1345,7 @@ Single item vectorisation
 |---|---|
 |model|english|
 |model|multilingual|
+|model|clip|
 
 <h2 id="tocS_TextVectorisationBatch">TextVectorisationBatch</h2>
 <!-- backwards compatibility -->
@@ -1269,7 +1372,7 @@ Batch text vectorisation
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |text|[string]|true|none|none|
-|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * Name of your own uploaded model|
+|model|string|false|none|Model to use:<br>  * `english` - English optimised vectorisation<br>  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.<br>  * `clip` - OpenAI CLIP, aligned with image vectors<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -1277,6 +1380,7 @@ Batch text vectorisation
 |---|---|
 |model|english|
 |model|multilingual|
+|model|clip|
 
 <h2 id="tocS_TextVectorisationResponse">TextVectorisationResponse</h2>
 <!-- backwards compatibility -->
@@ -1922,6 +2026,197 @@ Single item image classification response
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |probabilities|object|false|none|dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.|
+
+<h2 id="tocS_ImageVectorisationBody">ImageVectorisationBody</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationbody"></a>
+<a id="schema_ImageVectorisationBody"></a>
+<a id="tocSimagevectorisationbody"></a>
+<a id="tocsimagevectorisationbody"></a>
+
+```json
+{
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+  "model": "clip"
+}
+
+```
+
+Image vectorisation body
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Image vectorisation body|any|false|none|Image vectorisation body variants for single and batch requests|
+
+oneOf
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[ImageVectorisationSingle](#schemaimagevectorisationsingle)|false|none|Single item vectorisation|
+
+xor
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[ImageVectorisationBatch](#schemaimagevectorisationbatch)|false|none|Batch image vectorisation|
+
+<h2 id="tocS_ImageVectorisationSingle">ImageVectorisationSingle</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationsingle"></a>
+<a id="schema_ImageVectorisationSingle"></a>
+<a id="tocSimagevectorisationsingle"></a>
+<a id="tocsimagevectorisationsingle"></a>
+
+```json
+{
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+  "model": "clip"
+}
+
+```
+
+Single item vectorisation
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|image|string|true|none|none|
+|model|string|false|none|Model to use:<br>  * `clip`<br>  * Name of your own uploaded model|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|model|clip|
+
+<h2 id="tocS_ImageVectorisationBatch">ImageVectorisationBatch</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationbatch"></a>
+<a id="schema_ImageVectorisationBatch"></a>
+<a id="tocSimagevectorisationbatch"></a>
+<a id="tocsimagevectorisationbatch"></a>
+
+```json
+{
+  "image": [
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"
+  ],
+  "model": "clip"
+}
+
+```
+
+Batch image vectorisation
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|image|[string]|true|none|none|
+|model|string|false|none|Model to use:<br>  * `clip`<br>  * Name of your own uploaded model|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|model|clip|
+
+<h2 id="tocS_ImageVectorisationResponse">ImageVectorisationResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationresponse"></a>
+<a id="schema_ImageVectorisationResponse"></a>
+<a id="tocSimagevectorisationresponse"></a>
+<a id="tocsimagevectorisationresponse"></a>
+
+```json
+{
+  "vector": [
+    0.92949192,
+    0.2312301
+  ]
+}
+
+```
+
+Vectorisation response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|Vectorisation response|any|false|none|Vectorisation responses for single and batch requests|
+
+oneOf
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[ImageVectorisationSingleResponse](#schemaimagevectorisationsingleresponse)|false|none|none|
+
+xor
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[ImageVectorisationBatchResponse](#schemaimagevectorisationbatchresponse)|false|none|none|
+
+<h2 id="tocS_ImageVectorisationSingleResponse">ImageVectorisationSingleResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationsingleresponse"></a>
+<a id="schema_ImageVectorisationSingleResponse"></a>
+<a id="tocSimagevectorisationsingleresponse"></a>
+<a id="tocsimagevectorisationsingleresponse"></a>
+
+```json
+{
+  "vector": [
+    0.92949192,
+    0.2312301
+  ]
+}
+
+```
+
+Single item image vectorisation response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|vector|[number]|false|none|none|
+
+<h2 id="tocS_ImageVectorisationBatchResponse">ImageVectorisationBatchResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemaimagevectorisationbatchresponse"></a>
+<a id="schema_ImageVectorisationBatchResponse"></a>
+<a id="tocSimagevectorisationbatchresponse"></a>
+<a id="tocsimagevectorisationbatchresponse"></a>
+
+```json
+{
+  "vectorList": [
+    [
+      0.92949192,
+      0.2312301
+    ],
+    [
+      0.82939192,
+      0.5312701
+    ]
+  ]
+}
+
+```
+
+Batch image vectorisation response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|vectorList|[array]|false|none|none|
 
 <h2 id="tocS_TextGenerationBody">TextGenerationBody</h2>
 <!-- backwards compatibility -->

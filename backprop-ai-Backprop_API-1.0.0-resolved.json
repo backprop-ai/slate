@@ -163,6 +163,38 @@
         }
       }
     },
+    "/image-vectorisation": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "image vectorisation",
+        "description": "vectorises image or list of images that are base64 encoded",
+        "operationId": "image-vectorisation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImageVectorisationBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successfully vectorised",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageVectorisationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/text-generation": {
       "post": {
         "tags": [
@@ -443,12 +475,13 @@
           },
           "model": {
             "type": "string",
-            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * Name of your own uploaded model\n",
+            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * `clip` - OpenAI CLIP, aligned with image vectors\n  * Name of your own uploaded model\n",
             "example": "english",
             "default": "english",
             "enum": [
               "english",
-              "multilingual"
+              "multilingual",
+              "clip"
             ]
           }
         },
@@ -473,12 +506,13 @@
           },
           "model": {
             "type": "string",
-            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * Name of your own uploaded model\n",
+            "description": "Model to use:\n  * `english` - English optimised vectorisation\n  * `multilingual` - Multilingual vectorisation in 50+ languages: ar, bg, ca, cs, da, de, el, es, et, fa, fi, fr, fr-ca, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, pt, pt-br, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, zh-cn, zh-tw.\n  * `clip` - OpenAI CLIP, aligned with image vectors\n  * Name of your own uploaded model\n",
             "example": "english",
             "default": "english",
             "enum": [
               "english",
-              "multilingual"
+              "multilingual",
+              "clip"
             ]
           }
         },
@@ -932,6 +966,124 @@
             "example": {
               "brain with tumor": 0.98,
               "healthy brain": 0.02
+            }
+          }
+        }
+      },
+      "ImageVectorisationBody": {
+        "title": "Image vectorisation body",
+        "description": "Image vectorisation body variants for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ImageVectorisationSingle"
+          },
+          {
+            "$ref": "#/components/schemas/ImageVectorisationBatch"
+          }
+        ]
+      },
+      "ImageVectorisationSingle": {
+        "title": "Single item vectorisation",
+        "required": [
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string",
+            "example": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `clip`\n  * Name of your own uploaded model\n",
+            "example": "clip",
+            "default": "clip",
+            "enum": [
+              "clip"
+            ]
+          }
+        },
+        "description": "Single item vectorisation"
+      },
+      "ImageVectorisationBatch": {
+        "title": "Batch image vectorisation",
+        "required": [
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "array",
+            "example": [
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA",
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABpUAAATOCAYAAAA"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * `clip`\n  * Name of your own uploaded model\n  \n",
+            "example": "clip",
+            "default": "clip",
+            "enum": [
+              "clip"
+            ]
+          }
+        },
+        "description": "Batch image vectorisation"
+      },
+      "ImageVectorisationResponse": {
+        "title": "Vectorisation response",
+        "description": "Vectorisation responses for single and batch requests",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ImageVectorisationSingleResponse"
+          },
+          {
+            "$ref": "#/components/schemas/ImageVectorisationBatchResponse"
+          }
+        ]
+      },
+      "ImageVectorisationSingleResponse": {
+        "title": "Single item image vectorisation response",
+        "type": "object",
+        "properties": {
+          "vector": {
+            "type": "array",
+            "example": [
+              0.92949192,
+              0.2312301
+            ],
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      },
+      "ImageVectorisationBatchResponse": {
+        "title": "Batch image vectorisation response",
+        "type": "object",
+        "properties": {
+          "vectorList": {
+            "type": "array",
+            "example": [
+              [
+                0.92949192,
+                0.2312301
+              ],
+              [
+                0.82939192,
+                0.5312701
+              ]
+            ],
+            "items": {
+              "type": "array",
+              "items": {
+                "format": "float"
+              }
             }
           }
         }
