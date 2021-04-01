@@ -30,6 +30,8 @@ Welcome to our API documentation! Things to note:
   
   - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.
   
+  - You can specify your own uploaded model as the `model` field for every task that your model supports.
+  
   - Every account gets `1000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.
   
 If anything is unclear or you find that something is not working as intended, please get in touch!
@@ -378,7 +380,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
-## zero shot image classification
+## image classification
 
 <a id="opIdimage-classification"></a>
 
@@ -443,7 +445,7 @@ xhr.send(data);
 
 `POST /image-classification`
 
-Performs zero shot image classification on provided base64 encoded image and labels. The probabilities predicted for the labels will always sum to 100%.
+Performs image classification on provided base64 encoded image and labels.
 
 > Body parameter
 
@@ -458,7 +460,7 @@ Performs zero shot image classification on provided base64 encoded image and lab
 }
 ```
 
-<h3 id="zero-shot-image-classification-parameters">Parameters</h3>
+<h3 id="image-classification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -477,7 +479,7 @@ Performs zero shot image classification on provided base64 encoded image and lab
 }
 ```
 
-<h3 id="zero-shot-image-classification-responses">Responses</h3>
+<h3 id="image-classification-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -905,6 +907,105 @@ To perform this operation, you must be authenticated by means of one of the foll
 ApiKeyAuth
 </aside>
 
+## custom
+
+<a id="opIdcustom"></a>
+
+> Code samples
+
+```shell
+curl --request POST \
+  --url https://api.backprop.co/custom \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: API_KEY' \
+  --data '{"my-custom-field":"whatever value","model":"my-model"}'
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("api.backprop.co")
+
+payload = "{\"my-custom-field\":\"whatever value\",\"model\":\"my-model\"}"
+
+headers = {
+    'Content-Type': "application/json",
+    'Accept': "application/json",
+    'x-api-key': "API_KEY"
+    }
+
+conn.request("POST", "/custom", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```javascript
+const data = JSON.stringify({
+  "my-custom-field": "whatever value",
+  "model": "my-model"
+});
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://api.backprop.co/custom");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-api-key", "API_KEY");
+
+xhr.send(data);
+```
+
+`POST /custom`
+
+Performs your specified task on your uploaded model.
+
+> Body parameter
+
+```json
+{
+  "my-custom-field": "whatever value",
+  "model": "my-model"
+}
+```
+
+<h3 id="custom-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[CustomBody](#schemacustombody)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "output": 0.55
+}
+```
+
+<h3 id="custom-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful custom invocation|[CustomResponse](#schemacustomresponse)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
+
 <h1 id="backprop-api-models">Models</h1>
 
 Endpoints to view, upload and delete models
@@ -1235,15 +1336,15 @@ xhr.send(data);
 `POST /upload-url`
 
 (BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.
-  The zip file must contain exactly three files (no folders) with the specified names:
+  The zip file can contain any files, but must contain three required files with the specified names:
   
-  * model.bin (an initiated model on CPU pickled with dill)
+  * model.bin (an initiated model on CPU pickled with dill) or inference.py (with load_model and call_model functions)
   * config.json (with description (value is string) and task (value is list of strings) keys)
   * requirements.txt (a python requirements file with any runtime dependencies)
   
   The maximum supported size of the zip file is 5GB.
   
-It is the simplest to use our [python library](https://github.com/backprop-ai/backprop) for this functionality.
+Read our [deployment docs](https://backprop.co/docs/deploying) for more information.
 
 > Body parameter
 
@@ -1969,7 +2070,7 @@ Single item image classification
 |---|---|---|---|---|
 |image|string|true|none|base64 encoded image|
 |labels|[string]|true|none|labels to predict probabilities for|
-|model|string|false|none|Model to use:<br>  * `english` - Classification with English labels<br>  * Name of your own uploaded model|
+|model|string|false|none|Model to use:<br>  * `english` - Classification with English labels. The probabilities predicted for the labels will always sum to 100%.<br>  * Name of your own uploaded model|
 
 #### Enumerated Values
 
@@ -2025,7 +2126,7 @@ Single item image classification response
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|probabilities|object|false|none|dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.|
+|probabilities|object|false|none|dictionary where the keys are your labels and values are probabilities.|
 
 <h2 id="tocS_ImageVectorisationBody">ImageVectorisationBody</h2>
 <!-- backwards compatibility -->
@@ -2801,6 +2902,52 @@ Batch emotion detection response
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |output|[string]|false|none|none|
+
+<h2 id="tocS_CustomBody">CustomBody</h2>
+<!-- backwards compatibility -->
+<a id="schemacustombody"></a>
+<a id="schema_CustomBody"></a>
+<a id="tocScustombody"></a>
+<a id="tocscustombody"></a>
+
+```json
+{
+  "my-custom-field": "whatever value",
+  "model": "my-model"
+}
+
+```
+
+Custom task body
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|my-custom-field|string|false|none|none|
+|model|string|true|none|Model to use:<br>  * The name of your uploaded model that supports the `custom` task.|
+
+<h2 id="tocS_CustomResponse">CustomResponse</h2>
+<!-- backwards compatibility -->
+<a id="schemacustomresponse"></a>
+<a id="schema_CustomResponse"></a>
+<a id="tocScustomresponse"></a>
+<a id="tocscustomresponse"></a>
+
+```json
+{
+  "output": 0.55
+}
+
+```
+
+Custom model response
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|output|number|false|none|Whatever your model returns|
 
 <h2 id="tocS_ModelsResponse">ModelsResponse</h2>
 <!-- backwards compatibility -->

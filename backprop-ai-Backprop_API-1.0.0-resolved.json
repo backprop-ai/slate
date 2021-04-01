@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Backprop API",
-    "description": "Welcome to our API documentation! Things to note:\n\n  - Most task endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different `body` and `response` variants are shown in the respective `single` and `batch` schemas.\n  \n  - All endpoints require authentication with your API key in the `x-api-key` header.\n  \n  - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.\n  \n  - Every account gets `1000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.\n  \nIf anything is unclear or you find that something is not working as intended, please get in touch!\n",
+    "description": "Welcome to our API documentation! Things to note:\n\n  - Most task endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different `body` and `response` variants are shown in the respective `single` and `batch` schemas.\n  \n  - All endpoints require authentication with your API key in the `x-api-key` header.\n  \n  - Some task endpoints may have multiple `model` options. This is useful to know if your task is in a language other than English.\n  \n  - You can specify your own uploaded model as the `model` field for every task that your model supports.\n  \n  - Every account gets `1000` seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.\n  \nIf anything is unclear or you find that something is not working as intended, please get in touch!\n",
     "contact": {
       "email": "hello@backprop.co"
     },
@@ -136,8 +136,8 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "zero shot image classification",
-        "description": "Performs zero shot image classification on provided base64 encoded image and labels. The probabilities predicted for the labels will always sum to 100%.",
+        "summary": "image classification",
+        "description": "Performs image classification on provided base64 encoded image and labels.",
         "operationId": "image-classification",
         "requestBody": {
           "content": {
@@ -291,6 +291,38 @@
         }
       }
     },
+    "/custom": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "custom",
+        "description": "Performs your specified task on your uploaded model.\n",
+        "operationId": "custom",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful custom invocation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/models": {
       "get": {
         "tags": [
@@ -421,7 +453,7 @@
           "Models"
         ],
         "summary": "get upload url for model",
-        "description": "(BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.\n  The zip file must contain exactly three files (no folders) with the specified names:\n  \n  * model.bin (an initiated model on CPU pickled with dill)\n  * config.json (with description (value is string) and task (value is list of strings) keys)\n  * requirements.txt (a python requirements file with any runtime dependencies)\n  \n  The maximum supported size of the zip file is 5GB.\n  \nIt is the simplest to use our [python library](https://github.com/backprop-ai/backprop) for this functionality.\n",
+        "description": "(BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.\n  The zip file can contain any files, but must contain three required files with the specified names:\n  \n  * model.bin (an initiated model on CPU pickled with dill) or inference.py (with load_model and call_model functions)\n  * config.json (with description (value is string) and task (value is list of strings) keys)\n  * requirements.txt (a python requirements file with any runtime dependencies)\n  \n  The maximum supported size of the zip file is 5GB.\n  \nRead our [deployment docs](https://backprop.co/docs/deploying) for more information.\n",
         "operationId": "upload-url",
         "requestBody": {
           "content": {
@@ -937,7 +969,7 @@
           },
           "model": {
             "type": "string",
-            "description": "Model to use:\n  * `english` - Classification with English labels\n  * Name of your own uploaded model\n  \n",
+            "description": "Model to use:\n  * `english` - Classification with English labels. The probabilities predicted for the labels will always sum to 100%.\n  * Name of your own uploaded model\n  \n",
             "example": "english",
             "default": "english",
             "enum": [
@@ -962,7 +994,7 @@
         "properties": {
           "probabilities": {
             "type": "object",
-            "description": "dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.",
+            "description": "dictionary where the keys are your labels and values are probabilities.",
             "example": {
               "brain with tumor": 0.98,
               "healthy brain": 0.02
@@ -1521,6 +1553,36 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "CustomBody": {
+        "title": "Custom task body",
+        "required": [
+          "model"
+        ],
+        "type": "object",
+        "properties": {
+          "my-custom-field": {
+            "type": "string",
+            "example": "whatever value"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model to use:\n  * The name of your uploaded model that supports the `custom` task.\n  \n",
+            "example": "my-model"
+          }
+        },
+        "description": "Pass any valid json to your model. Only the `model` field is needed."
+      },
+      "CustomResponse": {
+        "title": "Custom model response",
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "number",
+            "description": "Whatever your model returns\n",
+            "example": 0.55
           }
         }
       },
