@@ -319,7 +319,7 @@
                     <a href="#text-classification" class="toc-h2 toc-link" data-title="text classification">text classification</a>
                   </li>
                   <li>
-                    <a href="#zero-shot-image-classification" class="toc-h2 toc-link" data-title="zero shot image classification">zero shot image classification</a>
+                    <a href="#image-classification" class="toc-h2 toc-link" data-title="image classification">image classification</a>
                   </li>
                   <li>
                     <a href="#image-vectorisation" class="toc-h2 toc-link" data-title="image vectorisation">image vectorisation</a>
@@ -332,6 +332,9 @@
                   </li>
                   <li>
                     <a href="#emotion-detection" class="toc-h2 toc-link" data-title="emotion detection">emotion detection</a>
+                  </li>
+                  <li>
+                    <a href="#custom" class="toc-h2 toc-link" data-title="custom">custom</a>
                   </li>
               </ul>
           </li>
@@ -494,6 +497,12 @@
                     <a href="#tocS_EmotionBatchResponse" class="toc-h2 toc-link" data-title="EmotionBatchResponse">EmotionBatchResponse</a>
                   </li>
                   <li>
+                    <a href="#tocS_CustomBody" class="toc-h2 toc-link" data-title="CustomBody">CustomBody</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_CustomResponse" class="toc-h2 toc-link" data-title="CustomResponse">CustomResponse</a>
+                  </li>
+                  <li>
                     <a href="#tocS_ModelsResponse" class="toc-h2 toc-link" data-title="ModelsResponse">ModelsResponse</a>
                   </li>
                   <li>
@@ -537,6 +546,7 @@
 <li><p>Most task endpoints can take both single and batched requests. This is so you can save time on round trip times speed up your inference when working with more data. The different <code>body</code> and <code>response</code> variants are shown in the respective <code>single</code> and <code>batch</code> schemas.</p></li>
 <li><p>All endpoints require authentication with your API key in the <code>x-api-key</code> header.</p></li>
 <li><p>Some task endpoints may have multiple <code>model</code> options. This is useful to know if your task is in a language other than English.</p></li>
+<li><p>You can specify your own uploaded model as the <code>model</code> field for every task that your model supports.</p></li>
 <li><p>Every account gets <code>1000</code> seconds of free inference every month. Seconds are calculated only for compute time when using the endpoints.</p></li>
 </ul>
 
@@ -935,7 +945,7 @@ ApiKeyAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKeyAuth
 </aside>
-<h2 id='zero-shot-image-classification'>zero shot image classification</h2>
+<h2 id='image-classification'>image classification</h2>
 <p><a id="opIdimage-classification"></a></p>
 
 <blockquote>
@@ -992,7 +1002,7 @@ ApiKeyAuth
 </code></pre></div>
 <p><code>POST /image-classification</code></p>
 
-<p>Performs zero shot image classification on provided base64 encoded image and labels. The probabilities predicted for the labels will always sum to 100%.</p>
+<p>Performs image classification on provided base64 encoded image and labels.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -1006,7 +1016,7 @@ ApiKeyAuth
   </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="zero-shot-image-classification-parameters">Parameters</h3>
+<h3 id="image-classification-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1038,7 +1048,7 @@ ApiKeyAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="zero-shot-image-classification-responses">Responses</h3>
+<h3 id="image-classification-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1537,6 +1547,120 @@ ApiKeyAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 ApiKeyAuth
 </aside>
+<h2 id='custom'>custom</h2>
+<p><a id="opIdcustom"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://api.backprop.co/custom <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"my-custom-field":"whatever value","model":"my-model"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"api.backprop.co"</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">my-custom-field</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">whatever value</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">model</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">my-model</span><span class="se">\"</span><span class="s">}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">"API_KEY"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/custom"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">my-custom-field</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">whatever value</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">model</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-model</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://api.backprop.co/custom</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">API_KEY</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>POST /custom</code></p>
+
+<p>Performs your specified task on your uploaded model.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"my-custom-field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whatever value"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-model"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="custom-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacustombody">CustomBody</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.55</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="custom-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful custom invocation</td>
+<td><a href="#schemacustomresponse">CustomResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+ApiKeyAuth
+</aside>
 
 <h1 id="backprop-api-models">Models</h1>
 
@@ -1917,17 +2041,17 @@ ApiKeyAuth
 <p><code>POST /upload-url</code></p>
 
 <p>(BETA) Gets an upload url for a model. The upload url is valid for an hour and takes a PUT request with a .zip file.
-  The zip file must contain exactly three files (no folders) with the specified names:</p>
+  The zip file can contain any files, but must contain three required files with the specified names:</p>
 
 <ul>
-<li>model.bin (an initiated model on CPU pickled with dill)</li>
+<li>model.bin (an initiated model on CPU pickled with dill) or inference.py (with load_model and call_model functions)</li>
 <li>config.json (with description (value is string) and task (value is list of strings) keys)</li>
 <li>requirements.txt (a python requirements file with any runtime dependencies)</li>
 </ul>
 
 <p>The maximum supported size of the zip file is 5GB.</p>
 
-<p>It is the simplest to use our <a href="https://github.com/backprop-ai/backprop">python library</a> for this functionality.</p>
+<p>Read our <a href="https://backprop.co/docs/deploying">deployment docs</a> for more information.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -3211,7 +3335,7 @@ ApiKeyAuth
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Model to use:<br>  * <code>english</code> - Classification with English labels<br>  * Name of your own uploaded model</td>
+<td>Model to use:<br>  * <code>english</code> - Classification with English labels. The probabilities predicted for the labels will always sum to 100%.<br>  * Name of your own uploaded model</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-7'>Enumerated Values</h4>
@@ -3295,7 +3419,7 @@ ApiKeyAuth
 <td>object</td>
 <td>false</td>
 <td>none</td>
-<td>dictionary where the keys are your labels and values are probabilities. Probabilities always sum to 100%.</td>
+<td>dictionary where the keys are your labels and values are probabilities.</td>
 </tr>
 </tbody></table>
 
@@ -4772,6 +4896,80 @@ ApiKeyAuth
 </tr>
 </tbody></table>
 
+<h2 id="tocS_CustomBody">CustomBody</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacustombody"></a>
+<a id="schema_CustomBody"></a>
+<a id="tocScustombody"></a>
+<a id="tocscustombody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"my-custom-field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whatever value"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-model"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Custom task body</p>
+<h3 id='properties-47'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>my-custom-field</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Model to use:<br>  * The name of your uploaded model that supports the <code>custom</code> task.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_CustomResponse">CustomResponse</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacustomresponse"></a>
+<a id="schema_CustomResponse"></a>
+<a id="tocScustomresponse"></a>
+<a id="tocscustomresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.55</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Custom model response</p>
+<h3 id='properties-48'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Whatever your model returns</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_ModelsResponse">ModelsResponse</h2>
 
 <!-- backwards compatibility -->
@@ -4796,7 +4994,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Get models response</p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4841,7 +5039,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Get model response</p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4955,7 +5153,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Model 404 response</p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4986,7 +5184,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Delete model response</p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5019,7 +5217,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Upload url response</p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5050,7 +5248,7 @@ ApiKeyAuth
 
 </span></code></pre></div>
 <p>Upload url response</p>
-<h3 id='properties-52'>Properties</h3>
+<h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5089,7 +5287,7 @@ ApiKeyAuth
   </span><span class="nl">"last_deployment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-05T10:31:16Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-53'>Properties</h3>
+</span></code></pre></div><h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
